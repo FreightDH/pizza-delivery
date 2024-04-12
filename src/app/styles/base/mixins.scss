@@ -14,7 +14,14 @@
 }
 
 // Адаптивное свойство (clamp)
-@mixin adaptiveValue($property, $startSize, $minSize, $widthFrom: $containerWidth, $widthTo: $minWidth, $keepSize: 0) {
+@mixin adaptiveValue(
+  $property,
+  $startSize,
+  $minSize,
+  $widthFrom: $containerWidth,
+  $widthTo: $minWidth,
+  $keepSize: 0
+) {
   @if ($startSize == 0) {
     $startSize: 0.000001;
   }
@@ -56,8 +63,10 @@
   // Если не поддерживается clamp();
   @supports not (#{$property}: $propertyValue) {
     #{$property}: calc(
-      #{toRem($minSize)} + #{$addSize} * (100vw - #{toRem($widthTo)}) / #{math.div($widthFrom, 16) -
-        math.div($widthTo, 16)}
+      #{toRem($minSize)} + #{$addSize} * (100vw - #{toRem($widthTo)}) / #{math.div($widthFrom, 16) - math.div(
+          $widthTo,
+          16
+        )}
     );
   }
 
