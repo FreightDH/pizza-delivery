@@ -22,8 +22,8 @@ export const Header: FC = (): ReactElement => {
             <div className={cl.contacts__phone}>8-800-123-45-67</div>
             <p className={cl.contacts__text}>Звонок по России бесплатный</p>
           </div>
-          <div className={cl.controls}>
-            <Link className={cl.controls__profile} to="/profile">
+          <div className={cl.links}>
+            <Link className={cl.links__profile} to="/profile">
               <img alt="profile-icon" src={profileIcon} />
             </Link>
             <Link to="/cart">

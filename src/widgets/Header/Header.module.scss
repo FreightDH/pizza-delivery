@@ -1,9 +1,11 @@
 .header {
-  padding: 50px 0px 35px 0px;
+  padding: 35px 0px;
+  box-shadow: 0px 0px 5px 1px rgba(34, 60, 80, 0.2);
 
   &__body {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 }
 
@@ -43,7 +45,7 @@
   }
 }
 
-.controls {
+.links {
   display: flex;
   gap: 20px;
 
