@@ -6,10 +6,13 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      app: '/src/app',
-      pages: '/src/pages',
-      shared: '/src/shared',
-      styles: '/src/styles',
+      '@': '/src',
+      '@/app': '/src/app',
+      '@/pages': '/src/pages',
+      '@/widgets': '/src/widgets',
+      '@/features': '/src/features',
+      '@/shared': '/src/shared',
+      '@/styles': '/src/styles',
     },
   },
 });

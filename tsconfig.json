@@ -25,12 +25,14 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "app/*": ["app/*"],
-      "pages/*": ["pages/*"],
-      "shared/*": ["shared/*"],
-      "styles/*": ["styles/*"]
+      "@/*": ["src/*"],
+      "@/app/*": ["src/app/*"],
+      "@/pages/*": ["src/pages/*"],
+      "@/features/*": ["src/features/*"],
+      "@/widgets/*": ["src/widgets/*"],
+      "@/shared/*": ["src/shared/*"]
     }
   },
   "include": ["src"],
