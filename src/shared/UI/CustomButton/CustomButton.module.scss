@@ -1,0 +1,39 @@
+.btn {
+  display: inline-block;
+  height: 50px;
+  padding: 15px 25px;
+
+  color: #eb5a1e;
+  font-size: 18px;
+
+  border: 1px solid #eb5a1e;
+  border-radius: 30px;
+  transition: all 0.3s ease 0s;
+
+  &.primary {
+    color: #fff;
+    background-color: #fe5f1e;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: #eb5a1e;
+      color: #fff;
+    }
+
+    &.primary:hover {
+      background-color: #f34500;
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      background-color: #eb5a1e;
+      color: #fff;
+    }
+
+    &.primary:active {
+      background-color: #f34500;
+    }
+  }
+}
