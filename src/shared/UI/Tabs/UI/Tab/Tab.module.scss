@@ -1,0 +1,29 @@
+.tab {
+  display: inline-block;
+  padding: 16px 40px;
+
+  background-color: #f6f6f6;
+  border-radius: 30px;
+  transition: all 0.3s ease 0s;
+
+  font-size: 16px;
+
+  &.active {
+    color: #fff;
+    background-color: #000;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: #fff;
+      background-color: #000;
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      color: #fff;
+      background-color: #000;
+    }
+  }
+}
