@@ -1,0 +1,85 @@
+.header {
+  padding: 50px 0px 35px 0px;
+
+  &__body {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.logo {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+
+  img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+  }
+
+  &__title {
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+
+  &__subtitle {
+    color: #7b7b7b;
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
+
+.contacts {
+  text-align: center;
+
+  &__phone {
+    font-size: 18px;
+  }
+
+  &__text {
+    font-size: 13px;
+    font-weight: 400;
+  }
+}
+
+.controls {
+  display: flex;
+  gap: 20px;
+
+  &__profile {
+    width: 50px;
+    height: 50px;
+
+    border: 1.5px solid #000;
+    border-radius: 50%;
+    transition: all 0.3s ease 0s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.button {
+  &__body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    gap: 15px;
+  }
+
+  &__divider {
+    width: 1px;
+    height: 20px;
+    background-color: #fff;
+  }
+
+  &__count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+}
