@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-const useScrollBlock = () => {
+export const useScrollBlock = () => {
   const scrollBlocked = useRef(false);
   const html = document.documentElement;
   const { body } = document;
@@ -34,5 +34,3 @@ const useScrollBlock = () => {
 
   return [blockScroll, allowScroll];
 };
-
-export default useScrollBlock;
