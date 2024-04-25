@@ -1,0 +1,22 @@
+.footer {
+  padding: 25px 0;
+
+  &__body {
+    display: flex;
+    justify-content: center;
+    flex: 0 0 33.333%;
+    gap: 60px;
+
+    font-size: 16px;
+  }
+
+  &__column {
+    max-width: 240px;
+  }
+
+  &__text {
+    margin: 20px 0px 0px 0px;
+    color: rgba($color: #000, $alpha: 0.5);
+    font-weight: 400;
+  }
+}
