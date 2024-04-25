@@ -4,6 +4,7 @@ import { cn } from '@/shared/lib';
 import { useControls } from '@/shared/lib/contexts/ControlsContext';
 
 import cl from './Dropdown.module.scss';
+import { useDishes } from '@/shared/lib/contexts/DishesContext';
 
 interface DropdownProps {
   sortOptions: string[];
@@ -11,9 +12,11 @@ interface DropdownProps {
 
 export const Dropdown: FC<DropdownProps> = ({ sortOptions }): ReactElement => {
   const { isDropdownOpen, setDropdownOpen, dropdownRef, activeSort, setActiveSort } = useControls();
+  const { handleSort } = useDishes();
 
   const handleClick = (option: string) => {
     setActiveSort(option);
+    handleSort(option);
     setDropdownOpen(false);
   };
 

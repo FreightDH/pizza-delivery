@@ -5,7 +5,7 @@ import { Controls } from '@/widgets/Controls';
 import cl from './HomePage.module.scss';
 
 const tabs = ['Все', 'Мясные', 'Вегетарианские', 'Острые'];
-const sortOptions = ['популярности', 'цене', 'алфавиту'];
+const sortOptions = ['популярности', 'цене', 'названию'];
 
 export const HomePage: FC = (): ReactElement => {
   return (

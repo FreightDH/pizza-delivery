@@ -1,9 +1,14 @@
 import type { ReactElement } from 'react';
-import { ReactRouterProvider } from './provider';
+
 import { ControlsProvider } from '@/shared/lib/contexts/ControlsContext';
+import { DishesProvider } from '@/shared/lib/contexts/DishesContext';
+
+import { ReactRouterProvider } from './provider';
 
 export const App = (): ReactElement => (
   <ControlsProvider>
-    <ReactRouterProvider />
+    <DishesProvider>
+      <ReactRouterProvider />
+    </DishesProvider>
   </ControlsProvider>
 );
