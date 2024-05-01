@@ -1,0 +1,22 @@
+.dishes {
+  padding: 35px 0px 0px 0px;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &__title {
+    font-size: 32px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    column-gap: 35px;
+    row-gap: 65px;
+  }
+}
