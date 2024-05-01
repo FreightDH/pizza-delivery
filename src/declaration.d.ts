@@ -5,6 +5,7 @@ declare module '*.module.scss' {
 
 type Dish = {
   id: number;
+  img: string;
   name: string;
   description: string;
   price: number[];
