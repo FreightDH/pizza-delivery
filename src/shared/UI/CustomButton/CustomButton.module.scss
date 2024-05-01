@@ -1,17 +1,23 @@
 .btn {
+  min-width: 140px;
   display: inline-block;
-  height: 50px;
-  padding: 15px 25px;
+  height: 40px;
+  padding: 10px 18px;
 
   color: #eb5a1e;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 700;
 
   border: 1px solid #eb5a1e;
   border-radius: 30px;
   transition: all 0.3s ease 0s;
 
   &.primary {
+    height: 50px;
+    padding: 15px 25px;
+
     color: #fff;
+    font-size: 18px;
     background-color: #fe5f1e;
   }
 

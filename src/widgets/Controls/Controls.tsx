@@ -12,9 +12,9 @@ interface ControlsProps {
 
 export const Controls: FC<ControlsProps> = ({ tabs, sortOptions }): ReactElement => {
   return (
-    <div className={cl.controls}>
+    <section className={cl.controls}>
       <Tabs tabs={tabs} />
       <Sort sortOptions={sortOptions} />
-    </div>
+    </section>
   );
 };
