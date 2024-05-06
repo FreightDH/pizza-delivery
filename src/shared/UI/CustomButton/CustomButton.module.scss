@@ -2,7 +2,7 @@
   min-width: 140px;
   display: inline-block;
   height: 40px;
-  padding: 10px 18px;
+  padding: 10px 20px;
 
   color: #eb5a1e;
   font-size: 16px;
@@ -21,6 +21,12 @@
     background-color: #fe5f1e;
   }
 
+  &.black {
+    color: #fff;
+    background-color: #282828;
+    border: none;
+  }
+
   @media (hover: hover) {
     &:hover {
       background-color: #eb5a1e;
@@ -29,6 +35,10 @@
 
     &.primary:hover {
       background-color: #f34500;
+    }
+
+    &.black:hover {
+      background-color: #282828;
     }
   }
 
@@ -40,6 +50,10 @@
 
     &.primary:active {
       background-color: #f34500;
+    }
+
+    &.black:active {
+      background-color: #282828;
     }
   }
 }
