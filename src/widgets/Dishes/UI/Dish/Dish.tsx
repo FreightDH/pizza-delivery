@@ -4,15 +4,18 @@ import { useState, type FC, type ReactElement } from 'react';
 import { cn } from '@/shared/lib';
 import { CustomButton } from '@/shared/UI/CustomButton';
 
+import { leafIcon, pepperIcon } from './assets';
 import cl from './Dish.module.scss';
 
 interface DishProps {
   img: string;
   name: string;
   price: number[];
+  isVegan?: boolean;
+  isHot?: boolean;
 }
 
-export const Dish: FC<DishProps> = ({ img, name, price }): ReactElement => {
+export const Dish: FC<DishProps> = ({ img, name, price, isVegan = false, isHot = false }): ReactElement => {
   const [size, setSize] = useState('30 см');
   const [dough, setDough] = useState('тонкое');
 
@@ -30,6 +33,10 @@ export const Dish: FC<DishProps> = ({ img, name, price }): ReactElement => {
     <div className={cl.dish}>
       <div className={cl.dish__image}>
         <img alt={name} src={img} />
+        <div className={cl.dish__icon}>
+          {isVegan && <img alt="leaf-icon" src={leafIcon} />}
+          {isHot && <img alt="pepper-icon" src={pepperIcon} />}
+        </div>
       </div>
       <div className={cl.dish__name}>{name}</div>
       <div className={cl.dish__controls}>

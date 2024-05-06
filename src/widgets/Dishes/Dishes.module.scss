@@ -12,11 +12,10 @@
   }
 
   &__list {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 
-    column-gap: 35px;
+    column-gap: 65px;
     row-gap: 65px;
   }
 }
