@@ -1,10 +1,10 @@
 import type { FC, ReactElement } from 'react';
-import cl from './PageNotFound.module.scss';
+
 import { CustomButton } from '@/shared/UI/CustomButton';
 
-interface PageNotFoundProps {}
+import cl from './PageNotFound.module.scss';
 
-export const PageNotFound: FC<PageNotFoundProps> = (): ReactElement => {
+export const PageNotFound: FC = (): ReactElement => {
   return (
     <main className={cl.page}>
       <div className="page__container">

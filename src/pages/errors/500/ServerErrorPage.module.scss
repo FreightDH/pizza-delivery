@@ -1,0 +1,27 @@
+.page {
+  &__body {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 120px;
+  }
+
+  &__description {
+    max-width: 1000px;
+    margin: 0px 0px 40px 0px;
+
+    font-size: 32px;
+    text-align: center;
+
+    span {
+      color: rgba($color: #000000, $alpha: 0.7);
+      font-size: 24px;
+      font-weight: 400;
+    }
+  }
+}

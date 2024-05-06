@@ -3,7 +3,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { ErrorLayout, Layout } from '@/pages/layout';
 import { HomePageRoute } from '@/pages/home';
-import { PageNotFoundRoute } from '@/pages/404';
+import { PageNotFoundRoute, ServerErrorPageRoute } from '@/pages/errors';
 
 const router = createBrowserRouter([
   {
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
   {
     path: '/error',
     element: <ErrorLayout />,
-    children: [PageNotFoundRoute],
+    children: [PageNotFoundRoute, ServerErrorPageRoute],
   },
 ]);
 
