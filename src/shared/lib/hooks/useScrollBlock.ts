@@ -32,5 +32,5 @@ export const useScrollBlock = () => {
     scrollBlocked.current = false;
   };
 
-  return [blockScroll, allowScroll];
+  return { scrollBlocked, blockScroll, allowScroll };
 };

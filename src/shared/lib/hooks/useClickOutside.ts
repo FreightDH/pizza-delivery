@@ -2,8 +2,8 @@ import type { RefObject } from 'react';
 import { useEffect } from 'react';
 
 export const useClickOutside = (
-  ref: RefObject<HTMLDivElement>,
-  toggleRef: RefObject<HTMLSpanElement>,
+  ref: RefObject<HTMLElement>,
+  toggleRef: RefObject<HTMLElement>,
   onClickOutside: () => void
 ) => {
   useEffect(() => {

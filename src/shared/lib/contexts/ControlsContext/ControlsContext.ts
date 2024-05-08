@@ -6,10 +6,16 @@ interface ControlsContextProps {
   setActiveTab: Dispatch<SetStateAction<string>>;
   activeSort: string;
   setActiveSort: Dispatch<SetStateAction<string>>;
+
   isDropdownOpen: boolean;
   setDropdownOpen: Dispatch<SetStateAction<boolean>>;
   dropdownRef: RefObject<HTMLDivElement> | null;
-  toggleRef: RefObject<HTMLSpanElement> | null;
+  toggleDropdownRef: RefObject<HTMLSpanElement> | null;
+
+  isMenuOpen: boolean;
+  setMenuOpen: Dispatch<SetStateAction<boolean>>;
+  menuRef: RefObject<HTMLUListElement> | null;
+  toggleMenuRef: RefObject<HTMLButtonElement> | null;
 }
 
 export const ControlsContext = createContext<ControlsContextProps>({
@@ -20,5 +26,9 @@ export const ControlsContext = createContext<ControlsContextProps>({
   isDropdownOpen: false,
   setDropdownOpen: () => {},
   dropdownRef: null,
-  toggleRef: null,
+  toggleDropdownRef: null,
+  isMenuOpen: false,
+  setMenuOpen: () => {},
+  menuRef: null,
+  toggleMenuRef: null,
 });
