@@ -9,6 +9,7 @@ interface ControlsContextProps {
   isDropdownOpen: boolean;
   setDropdownOpen: Dispatch<SetStateAction<boolean>>;
   dropdownRef: RefObject<HTMLDivElement> | null;
+  toggleRef: RefObject<HTMLSpanElement> | null;
 }
 
 export const ControlsContext = createContext<ControlsContextProps>({
@@ -19,4 +20,5 @@ export const ControlsContext = createContext<ControlsContextProps>({
   isDropdownOpen: false,
   setDropdownOpen: () => {},
   dropdownRef: null,
+  toggleRef: null,
 });

@@ -19,7 +19,9 @@ export const Header: FC = (): ReactElement => {
             </div>
           </Link>
           <div className={cl.contacts}>
-            <div className={cl.contacts__phone}>8-800-123-45-67</div>
+            <div className={cl.contacts__phone}>
+              <a href="tel:88001234567">8-800-123-45-67</a>
+            </div>
             <p className={cl.contacts__text}>Звонок по России бесплатный</p>
           </div>
           <div className={cl.links}>

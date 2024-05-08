@@ -12,8 +12,9 @@ export const ControlsProvider: FC<ControlsProviderProps> = ({ children }): React
   const [activeSort, setActiveSort] = useState('популярности');
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLSpanElement>(null);
 
-  useClickOutside(dropdownRef, () => setDropdownOpen(false));
+  useClickOutside(dropdownRef, toggleRef, () => setDropdownOpen(false));
 
   const value = useMemo(
     () => ({
@@ -24,6 +25,7 @@ export const ControlsProvider: FC<ControlsProviderProps> = ({ children }): React
       isDropdownOpen,
       setDropdownOpen,
       dropdownRef,
+      toggleRef,
     }),
     [activeTab, activeSort, isDropdownOpen]
   );
