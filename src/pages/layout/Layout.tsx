@@ -17,7 +17,7 @@ export const Layout: FC = (): ReactElement => {
 export const ErrorLayout: FC = (): ReactElement => {
   return (
     <>
-      <Header />
+      <Header isErrorPage />
       <Outlet />
     </>
   );

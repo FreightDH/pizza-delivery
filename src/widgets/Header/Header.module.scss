@@ -1,5 +1,9 @@
+@import '@/app/styles';
+
 .header {
   padding: 35px 0px;
+  @include adaptiveValue('padding-top', 35, 20);
+  @include adaptiveValue('padding-bottom', 35, 20);
   box-shadow: 0px 0px 5px 1px rgba(34, 60, 80, 0.2);
 
   &__body {
@@ -11,78 +15,29 @@
 
 .logo {
   display: flex;
+  align-items: center;
   gap: 10px;
+  @include adaptiveValue('gap', 10, 5);
   cursor: pointer;
 
   img {
     width: 40px;
     height: 40px;
+    @include adaptiveValue('width', 40, 30);
+    @include adaptiveValue('height', 40, 30);
     object-fit: cover;
   }
 
   &__title {
     font-size: 24px;
+    @include adaptiveValue('font-size', 24, 14);
     text-transform: uppercase;
   }
 
   &__subtitle {
     color: #7b7b7b;
     font-size: 16px;
+    @include adaptiveValue('font-size', 16, 10);
     font-weight: 400;
-  }
-}
-
-.contacts {
-  text-align: center;
-
-  &__phone {
-    font-size: 18px;
-  }
-
-  &__text {
-    color: rgba($color: #000, $alpha: 0.5);
-    font-size: 13px;
-    font-weight: 400;
-  }
-}
-
-.links {
-  display: flex;
-  gap: 20px;
-
-  &__profile {
-    width: 50px;
-    height: 50px;
-
-    border: 1.5px solid #000;
-    border-radius: 50%;
-    transition: all 0.3s ease 0s;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-.button {
-  &__body {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-    gap: 15px;
-  }
-
-  &__divider {
-    width: 1px;
-    height: 20px;
-    background-color: #fff;
-  }
-
-  &__count {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
   }
 }
