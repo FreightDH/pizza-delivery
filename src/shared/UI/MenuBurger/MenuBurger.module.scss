@@ -1,0 +1,137 @@
+@import '@/app/styles';
+
+.menu {
+  flex: 1 1 auto;
+
+  &__icon {
+    display: none;
+    position: absolute;
+    top: 35px;
+    right: 20px;
+    width: toRem(25);
+    height: toRem(16);
+    cursor: pointer;
+    z-index: 5;
+
+    span {
+      transition: all 0.3s ease 0s;
+      position: absolute;
+      top: 7px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #ffd058;
+
+      &:first-child {
+        top: 0px;
+      }
+
+      &:last-child {
+        top: auto;
+        bottom: 0px;
+      }
+    }
+
+    @media (max-width: $mobile) {
+      display: block;
+      @include adaptiveValue('top', 35, 25, 767.98, 320);
+    }
+
+    .menuOpen & {
+      span {
+        transform: scale(0);
+
+        &:first-child {
+          transform: rotate(45deg);
+          top: 5px;
+        }
+
+        &:last-child {
+          transform: rotate(-45deg);
+          top: 5px;
+        }
+      }
+    }
+  }
+
+  &__body {
+    @media (max-width: $mobile) {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      right: -110%;
+      background-color: #fff;
+      z-index: 2;
+      padding: 70px 10px 20px 10px;
+      overflow: auto;
+      transition: all 0.3s ease 0s;
+
+      &.menuOpen {
+        right: 0%;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+
+      li {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.contacts {
+  flex: 1 1 auto;
+  text-align: center;
+
+  @media (max-width: $mobile) {
+    order: 1;
+    position: absolute;
+    bottom: 15px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      top: -15px;
+      left: 0;
+      background-color: #e3e3e3;
+    }
+  }
+
+  &__phone {
+    font-size: 18px;
+    @include adaptiveValue('font-size', 18, 13);
+  }
+
+  &__text {
+    color: rgba($color: #000, $alpha: 0.5);
+    font-size: 13px;
+    @include adaptiveValue('font-size', 13, 10);
+    font-weight: 400;
+  }
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+  @include adaptiveValue('gap', 20, 15);
+
+  @media (max-width: $mobile) {
+    flex-direction: column;
+
+    span {
+      font-size: 20px;
+      @include adaptiveValue('font-size', 20, 15);
+      font-weight: 400;
+    }
+  }
+}
