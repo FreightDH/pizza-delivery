@@ -1,0 +1,49 @@
+@import '@/app/styles';
+
+.cart {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  @media (max-width: $mobile) {
+    display: none;
+  }
+
+  &.menuOpen {
+    display: flex;
+  }
+
+  img {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+  }
+}
+
+.button {
+  &__body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    gap: 15px;
+  }
+
+  &__divider {
+    width: 1px;
+    height: 20px;
+    background-color: #fff;
+  }
+
+  &__count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
