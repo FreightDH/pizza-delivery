@@ -30,14 +30,14 @@
 
   &__title {
     font-size: 24px;
-    @include adaptiveValue('font-size', 24, 14);
+    @include adaptiveValue('font-size', 24, 16);
     text-transform: uppercase;
   }
 
   &__subtitle {
     color: #7b7b7b;
     font-size: 16px;
-    @include adaptiveValue('font-size', 16, 10);
+    @include adaptiveValue('font-size', 16, 12);
     font-weight: 400;
   }
 }
