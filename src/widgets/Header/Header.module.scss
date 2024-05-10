@@ -37,7 +37,7 @@
   &__subtitle {
     color: #7b7b7b;
     font-size: 16px;
-    @include adaptiveValue('font-size', 16, 12);
+    @include adaptiveValue('font-size', 16, 11);
     font-weight: 400;
   }
 }

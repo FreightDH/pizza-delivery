@@ -1,0 +1,1 @@
+export { DishMobile } from './DishMobile';

@@ -4,7 +4,7 @@ import { useState, type FC, type ReactElement } from 'react';
 import { cn } from '@/shared/lib';
 import { CustomButton } from '@/shared/UI/CustomButton';
 
-import { leafIcon, pepperIcon } from './assets';
+import { leafIcon, pepperIcon } from '../assets';
 import cl from './Dish.module.scss';
 
 interface DishProps {

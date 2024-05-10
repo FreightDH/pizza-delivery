@@ -2,14 +2,17 @@
 
 .btn {
   min-width: 140px;
+  @include adaptiveValue('min-width', 140, 100);
   display: inline-block;
-  height: 40px;
-  @include adaptiveValue('height', 40, 35);
   padding: 10px 20px;
-  @include adaptiveValue('padding-top', 10, 8);
+  @include adaptiveValue('padding-top', 10, 7);
+  @include adaptiveValue('padding-bottom', 10, 7);
+  @include adaptiveValue('padding-left', 20, 10);
+  @include adaptiveValue('padding-right', 20, 10);
 
   color: #eb5a1e;
   font-size: 16px;
+  @include adaptiveValue('font-size', 16, 13);
   font-weight: 700;
 
   border: 1px solid #eb5a1e;
