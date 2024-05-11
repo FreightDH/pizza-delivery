@@ -12,7 +12,7 @@ interface SortProps {
 }
 
 export const Sort: FC<SortProps> = ({ sortOptions }): ReactElement => {
-  const { activeSort, isDropdownOpen, setDropdownOpen, toggleRef } = useControls();
+  const { activeSort, isDropdownOpen, setDropdownOpen, toggleDropdownRef } = useControls();
 
   return (
     <div className={cl.sort}>
@@ -20,7 +20,7 @@ export const Sort: FC<SortProps> = ({ sortOptions }): ReactElement => {
         <img alt="arrow-icon" className={cn('', { [cl.open]: isDropdownOpen })} src={arrowIcon} />
         <div>
           Сортировка по{' '}
-          <span ref={toggleRef} onClick={() => setDropdownOpen(!isDropdownOpen)}>
+          <span ref={toggleDropdownRef} onClick={() => setDropdownOpen(!isDropdownOpen)}>
             {activeSort}
           </span>
         </div>

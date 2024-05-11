@@ -1,12 +1,19 @@
+@import '@/app/styles';
+
 .tab {
   display: inline-block;
   padding: 16px 40px;
+  @include adaptiveValue('padding-top', 16, 10);
+  @include adaptiveValue('padding-bottom', 16, 10);
+  @include adaptiveValue('padding-left', 40, 15);
+  @include adaptiveValue('padding-right', 40, 15);
 
   background-color: #f6f6f6;
   border-radius: 30px;
   transition: all 0.3s ease 0s;
 
   font-size: 16px;
+  @include adaptiveValue('font-size', 16, 13);
 
   &.active {
     color: #fff;

@@ -1,3 +1,5 @@
+@import '@/app/styles';
+
 .dropdown {
   opacity: 0;
   visibility: hidden;
@@ -14,6 +16,8 @@
 
   &__body {
     padding: 13px 0;
+    @include adaptiveValue('padding-top', 13, 7);
+    @include adaptiveValue('padding-bottom', 13, 7);
 
     border-radius: 10px;
     background-color: #fff;
@@ -23,6 +27,7 @@
   &__option {
     padding: 10px 15px;
     font-weight: 400;
+    @include adaptiveValue('font-size', 16, 13);
 
     @media (hover: hover) {
       &:hover {
