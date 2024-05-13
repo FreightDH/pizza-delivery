@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 
 const breakpoints = {
   0: 'xs',
-  635: 'sm',
-  960: 'md',
+  768: 'sm',
+  992: 'md',
   1280: 'lg',
   1920: 'xl',
 };
@@ -31,14 +31,14 @@ export const useBreakpoint = () => {
     window.addEventListener('resize', handleResize);
     handleResize();
 
-    if (0 < windowSize.width && windowSize.width < 635) {
+    if (0 < windowSize.width && windowSize.width < 768) {
       setBreakPoint(breakpoints[0]);
     }
-    if (635 < windowSize.width && windowSize.width < 960) {
-      setBreakPoint(breakpoints[635]);
+    if (768 < windowSize.width && windowSize.width < 992) {
+      setBreakPoint(breakpoints[768]);
     }
-    if (960 < windowSize.width && windowSize.width < 1280) {
-      setBreakPoint(breakpoints[960]);
+    if (992 < windowSize.width && windowSize.width < 1280) {
+      setBreakPoint(breakpoints[992]);
     }
     if (1280 < windowSize.width && windowSize.width < 1920) {
       setBreakPoint(breakpoints[1280]);

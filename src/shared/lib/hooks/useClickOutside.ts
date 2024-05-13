@@ -3,16 +3,20 @@ import { useEffect } from 'react';
 
 export const useClickOutside = (
   ref: RefObject<HTMLElement>,
-  toggleRef: RefObject<HTMLElement>,
+  dependenciesArray: RefObject<HTMLElement>[],
   onClickOutside: () => void
 ) => {
   useEffect(() => {
     const handleClickOutside = ({ target }: MouseEvent) => {
-      if (
-        ref.current &&
-        !ref.current.contains(target as Node) &&
-        !toggleRef.current?.contains(target as Node)
-      ) {
+      let flag = false;
+
+      dependenciesArray.forEach((dep) => {
+        if (dep.current?.contains(target as Node)) flag = true;
+      });
+
+      if (flag) return;
+
+      if (ref.current && !ref.current.contains(target as Node)) {
         onClickOutside();
       }
     };
@@ -22,5 +26,5 @@ export const useClickOutside = (
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [ref, onClickOutside, toggleRef]);
+  }, [ref, onClickOutside, dependenciesArray]);
 };
