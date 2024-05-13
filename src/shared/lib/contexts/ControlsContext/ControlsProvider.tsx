@@ -1,10 +1,11 @@
-import type { FC, ReactElement, ReactNode } from 'react';
+import type { FC, ReactElement, ReactNode, RefObject } from 'react';
 import { useMemo, useRef, useState } from 'react';
 
 import { ControlsContext } from './ControlsContext';
 
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useScrollBlock } from '../../hooks/useScrollBlock';
+import { usePopup } from '../PopupContext';
 
 interface ControlsProviderProps {
   children: ReactNode;
@@ -22,9 +23,10 @@ export const ControlsProvider: FC<ControlsProviderProps> = ({ children }): React
   const { scrollBlocked, allowScroll } = useScrollBlock();
   const menuRef = useRef<HTMLUListElement>(null);
   const toggleMenuRef = useRef<HTMLButtonElement>(null);
+  const { popupRef } = usePopup();
 
-  useClickOutside(dropdownRef, toggleDropdownRef, () => setDropdownOpen(false));
-  useClickOutside(menuRef, toggleMenuRef, () => {
+  useClickOutside(dropdownRef, [toggleDropdownRef], () => setDropdownOpen(false));
+  useClickOutside(menuRef, [toggleMenuRef, popupRef as RefObject<HTMLElement>], () => {
     scrollBlocked.current = true;
     allowScroll();
     setMenuOpen(false);

@@ -1,7 +1,8 @@
 import type { FC, ReactElement, ReactNode } from 'react';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 
 import { useScrollBlock } from '../../hooks/useScrollBlock';
+import { useClickOutside } from '../../hooks/useClickOutside';
 
 import { PopupContext } from './PopupContext';
 
@@ -10,6 +11,7 @@ interface PopupProviderProps {
 }
 
 export const PopupProvider: FC<PopupProviderProps> = ({ children }): ReactElement => {
+  const popupRef = useRef<HTMLDivElement>(null);
   const [dishDetails, setDishDetails] = useState<Pizza | null>(null);
   const [isDishCardOpen, setDishCardOpen] = useState(false);
   const { blockScroll, allowScroll } = useScrollBlock();
@@ -28,8 +30,11 @@ export const PopupProvider: FC<PopupProviderProps> = ({ children }): ReactElemen
     allowScroll();
   }, [allowScroll]);
 
+  useClickOutside(popupRef, [], closeDishCard);
+
   const value = useMemo(
     () => ({
+      popupRef,
       dishDetails,
       isDishCardOpen,
       openDishCard,

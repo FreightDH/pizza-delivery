@@ -1,17 +1,17 @@
 import type { ReactElement } from 'react';
 
+import { PopupProvider } from '@/shared/lib/contexts/PopupContext';
 import { ControlsProvider } from '@/shared/lib/contexts/ControlsContext';
 import { DishesProvider } from '@/shared/lib/contexts/DishesContext';
-import { PopupProvider } from '@/shared/lib/contexts/PopupContext';
 
 import { ReactRouterProvider } from './provider';
 
 export const App = (): ReactElement => (
-  <ControlsProvider>
-    <DishesProvider>
-      <PopupProvider>
+  <PopupProvider>
+    <ControlsProvider>
+      <DishesProvider>
         <ReactRouterProvider />
-      </PopupProvider>
-    </DishesProvider>
-  </ControlsProvider>
+      </DishesProvider>
+    </ControlsProvider>
+  </PopupProvider>
 );
