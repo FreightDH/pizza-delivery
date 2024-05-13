@@ -1,6 +1,6 @@
 @import '@/app/styles';
 
-.dish {
+.pizza {
   width: 280px;
 
   display: flex;
@@ -23,6 +23,10 @@
     @include adaptiveValue('width', 260, 140);
     @include adaptiveValue('height', 260, 140);
     position: relative;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     img {
       width: 100%;
@@ -102,6 +106,7 @@
   }
 
   &__item {
+    display: inline-block;
     width: 130px;
     @include adaptiveValue('width', 130, 100);
     padding: 8px;
@@ -109,6 +114,7 @@
     transition: all 0.2s ease 0s;
     border-radius: 5px;
 
+    font-weight: 700;
     text-align: center;
 
     @media (hover: hover) {

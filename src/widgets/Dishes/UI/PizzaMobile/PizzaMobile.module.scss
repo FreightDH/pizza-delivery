@@ -1,6 +1,6 @@
 @import '@/app/styles';
 
-.dish {
+.pizza {
   width: 240px;
   @include adaptiveValue('width', 240, 270);
   padding: 10px 10px 15px 10px;

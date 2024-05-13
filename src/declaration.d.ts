@@ -3,7 +3,7 @@ declare module '*.module.scss' {
   export default styles;
 }
 
-type Dish = {
+type Pizza = {
   id: number;
   img: string;
   name: string;
