@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 interface DishesContextProps {
-  filteredAndSortedDishes: Dish[];
+  filteredAndSortedDishes: Pizza[];
   handleFilter: (query: string) => void;
   handleSort: (query: string) => void;
 }
