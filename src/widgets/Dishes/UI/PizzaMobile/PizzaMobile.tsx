@@ -1,5 +1,6 @@
 import type { FC, ReactElement } from 'react';
 
+import { usePopup } from '@/shared/lib/contexts/PopupContext';
 import { CustomButton } from '@/shared/UI/CustomButton';
 
 import { leafIcon, pepperIcon } from '../assets';
@@ -11,6 +12,7 @@ interface PizzaMobileProps {
 
 export const PizzaMobile: FC<PizzaMobileProps> = ({ pizza }): ReactElement => {
   const { img, name, description, price, isVegan = false, isHot = false } = pizza;
+  const { openDishCard } = usePopup();
 
   return (
     <div className={cl.pizza}>
@@ -25,7 +27,9 @@ export const PizzaMobile: FC<PizzaMobileProps> = ({ pizza }): ReactElement => {
       <div className={cl.pizza__description}>{description}</div>
       <div className={cl.pizza__footer}>
         <div className={cl.pizza__price}>{`от ${price[0]} ₽`}</div>
-        <CustomButton className={cl.pizza__btn}>Выбрать</CustomButton>
+        <CustomButton className={cl.pizza__btn} onClick={() => openDishCard(pizza)}>
+          Выбрать
+        </CustomButton>
       </div>
     </div>
   );

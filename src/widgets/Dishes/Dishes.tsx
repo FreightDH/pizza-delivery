@@ -1,19 +1,21 @@
 import type { FC, ReactElement } from 'react';
 
+import { useBreakpoint } from '@/shared/lib';
 import { useControls } from '@/shared/lib/contexts/ControlsContext';
 import { useDishes } from '@/shared/lib/contexts/DishesContext';
+import { usePopup } from '@/shared/lib/contexts/PopupContext';
 
-import { Dish } from './UI/Dish';
+import { DishCard } from '@/shared/UI/DishCard';
+
+import { Pizza } from './UI/Pizza';
+import { PizzaMobile } from './UI/PizzaMobile';
 
 import cl from './Dishes.module.scss';
-import { useBreakpoint } from '@/shared/lib';
-import { DishMobile } from './UI/DishMobile';
 
-interface DishesProps {}
-
-export const Dishes: FC<DishesProps> = (): ReactElement => {
+export const Dishes: FC = (): ReactElement => {
   const { activeTab } = useControls();
   const { filteredAndSortedDishes } = useDishes();
+  const { isDishCardOpen } = usePopup();
   const breakpoint = useBreakpoint();
 
   return (
@@ -21,23 +23,13 @@ export const Dishes: FC<DishesProps> = (): ReactElement => {
       <div className={cl.dishes__body}>
         <h2 className={cl.dishes__title}>{activeTab} пиццы</h2>
         <div className={cl.dishes__list}>
-          {filteredAndSortedDishes.map(({ id, img, name, description, price, isVegan, isHot }) => {
-            if (breakpoint !== 'xs')
-              return <Dish key={id} img={img} isHot={isHot} isVegan={isVegan} name={name} price={price} />;
+          {filteredAndSortedDishes.map((dish) => {
+            if (breakpoint !== 'xs') return <Pizza key={dish.id} pizza={dish} />;
 
-            return (
-              <DishMobile
-                key={id}
-                description={description}
-                img={img}
-                isHot={isHot}
-                isVegan={isVegan}
-                name={name}
-                price={price}
-              />
-            );
+            return <PizzaMobile key={dish.id} pizza={dish} />;
           })}
         </div>
+        {isDishCardOpen && <DishCard />}
       </div>
     </section>
   );

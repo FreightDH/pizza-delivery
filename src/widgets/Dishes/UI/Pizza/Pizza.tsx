@@ -2,6 +2,7 @@ import type { MouseEvent } from 'react';
 import { useState, type FC, type ReactElement } from 'react';
 
 import { cn } from '@/shared/lib';
+import { usePopup } from '@/shared/lib/contexts/PopupContext';
 import { CustomButton } from '@/shared/UI/CustomButton';
 
 import { leafIcon, pepperIcon } from '../assets';
@@ -15,6 +16,7 @@ export const Pizza: FC<PizzaProps> = ({ pizza }): ReactElement => {
   const { img, name, price, isVegan = false, isHot = false } = pizza;
   const [size, setSize] = useState('30 см');
   const [dough, setDough] = useState('тонкое');
+  const { openDishCard } = usePopup();
 
   const handleControlsClick = (e: MouseEvent<HTMLButtonElement>, type: 'dought' | 'size') => {
     const { textContent } = e.target as HTMLElement;
@@ -28,7 +30,7 @@ export const Pizza: FC<PizzaProps> = ({ pizza }): ReactElement => {
 
   return (
     <div className={cl.pizza}>
-      <div className={cl.pizza__image}>
+      <div className={cl.pizza__image} onClick={() => openDishCard(pizza)}>
         <img alt={name} src={img} />
         <div className={cl.pizza__icon}>
           {isVegan && <img alt="leaf-icon" src={leafIcon} />}
