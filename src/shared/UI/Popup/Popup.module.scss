@@ -1,3 +1,5 @@
+@import '@/app/styles';
+
 .popup {
   position: fixed;
   width: 100%;
@@ -28,6 +30,8 @@
     height: 20px;
     top: -20px;
     right: -20px;
+    @include adaptiveValue('top', -20, -25);
+    @include adaptiveValue('right', -20, -10);
     background-color: transparent;
 
     img {
