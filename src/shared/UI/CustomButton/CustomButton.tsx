@@ -16,14 +16,21 @@ export const CustomButton: FC<CustomButtonProps> = ({
   black = false,
   to = '',
   children,
+  onClick,
 }): ReactElement => {
   if (to) {
     return (
       <Link to={to}>
-        <button className={cn(cl.btn, { [cl.primary]: primary, [cl.black]: black })}>{children}</button>
+        <button className={cn(cl.btn, { [cl.primary]: primary, [cl.black]: black })} onClick={onClick}>
+          {children}
+        </button>
       </Link>
     );
   }
 
-  return <button className={cn(cl.btn, { [cl.primary]: primary, [cl.black]: black })}>{children}</button>;
+  return (
+    <button className={cn(cl.btn, { [cl.primary]: primary, [cl.black]: black })} onClick={onClick}>
+      {children}
+    </button>
+  );
 };
