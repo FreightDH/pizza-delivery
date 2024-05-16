@@ -10,7 +10,7 @@ import { profileIcon } from '../../assets';
 import cl from './ProfileLink.module.scss';
 
 export const ProfileLink: FC = (): ReactElement => {
-  const { isMenuOpen } = useControls();
+  const { isMenuOpen, setMenuOpen } = useControls();
   const { isAuth } = useAuth();
   const { openCard, setAuthCardOpen } = usePopup();
 
@@ -18,7 +18,10 @@ export const ProfileLink: FC = (): ReactElement => {
     return (
       <button
         className={cn(cl.profile, { [cl.menuOpen]: isMenuOpen })}
-        onClick={() => openCard(setAuthCardOpen)}
+        onClick={() => {
+          setMenuOpen(false);
+          openCard(setAuthCardOpen);
+        }}
       >
         <img alt="profile-icon" src={profileIcon} />
         {isMenuOpen && <span>Личный кабинет</span>}

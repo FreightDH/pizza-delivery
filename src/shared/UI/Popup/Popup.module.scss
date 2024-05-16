@@ -10,6 +10,8 @@
 
   background-color: rgba(0, 0, 0, 0.7);
 
+  animation: appear 0.15s;
+
   &__body {
     min-height: 100%;
     padding: 30px 15px;
@@ -39,5 +41,31 @@
       height: 100%;
       object-fit: cover;
     }
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 }

@@ -15,13 +15,18 @@ export const CustomButton: FC<CustomButtonProps> = ({
   primary = false,
   black = false,
   to = '',
+  style = {},
   children,
   onClick,
 }): ReactElement => {
   if (to) {
     return (
       <Link to={to}>
-        <button className={cn(cl.btn, { [cl.primary]: primary, [cl.black]: black })} onClick={onClick}>
+        <button
+          className={cn(cl.btn, { [cl.primary]: primary, [cl.black]: black })}
+          style={style}
+          onClick={onClick}
+        >
           {children}
         </button>
       </Link>
@@ -29,7 +34,11 @@ export const CustomButton: FC<CustomButtonProps> = ({
   }
 
   return (
-    <button className={cn(cl.btn, { [cl.primary]: primary, [cl.black]: black })} onClick={onClick}>
+    <button
+      className={cn(cl.btn, { [cl.primary]: primary, [cl.black]: black })}
+      style={style}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
