@@ -7,11 +7,33 @@ interface AuthProviderProps {
 
 export const AuthProvider: FC<AuthProviderProps> = ({ children }): ReactElement => {
   const [isAuth, setAuth] = useState(false);
+  const [user, setUser] = useState<User | null>({
+    firstName: '',
+    lastName: '',
+    birthdayDate: '',
+    phone: '',
+    email: '',
+  });
+
+  const signIn = (phone: string) => {
+    setUser({ phone, firstName: '', lastName: '', birthdayDate: '', email: '' });
+    setAuth(true);
+    localStorage.setItem('isAuth', 'true');
+  };
+
+  const signOut = () => {
+    setUser(null);
+    setAuth(false);
+    localStorage.removeItem('isAuth');
+  };
 
   const value = useMemo(
     () => ({
+      user,
       isAuth,
       setAuth,
+      signIn,
+      signOut,
     }),
     [isAuth]
   );

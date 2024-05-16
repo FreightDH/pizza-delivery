@@ -14,3 +14,11 @@ type Pizza = {
   isVegan?: boolean;
   isHot?: boolean;
 };
+
+type User = {
+  firstName: string;
+  lastName: string;
+  birthdayDate: string;
+  phone: string;
+  email: string;
+};
