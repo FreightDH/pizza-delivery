@@ -3,9 +3,6 @@ import type { FC, ReactElement } from 'react';
 import { useBreakpoint } from '@/shared/lib';
 import { useControls } from '@/shared/lib/contexts/ControlsContext';
 import { useDishes } from '@/shared/lib/contexts/DishesContext';
-import { usePopup } from '@/shared/lib/contexts/PopupContext';
-
-import { DishCard } from '@/shared/UI/DishCard';
 
 import { Pizza } from './UI/Pizza';
 import { PizzaMobile } from './UI/PizzaMobile';
@@ -15,7 +12,6 @@ import cl from './Dishes.module.scss';
 export const Dishes: FC = (): ReactElement => {
   const { activeTab } = useControls();
   const { filteredAndSortedDishes } = useDishes();
-  const { isDishCardOpen } = usePopup();
   const breakpoint = useBreakpoint();
 
   return (
@@ -29,7 +25,6 @@ export const Dishes: FC = (): ReactElement => {
             return <PizzaMobile key={dish.id} pizza={dish} />;
           })}
         </div>
-        {isDishCardOpen && <DishCard />}
       </div>
     </section>
   );

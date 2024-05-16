@@ -1,4 +1,4 @@
-import type { FC, ReactElement, ReactNode } from 'react';
+import type { Dispatch, FC, ReactElement, ReactNode, SetStateAction } from 'react';
 import { useCallback, useMemo, useRef, useState } from 'react';
 
 import { useScrollBlock } from '../../hooks/useScrollBlock';
@@ -14,6 +14,7 @@ export const PopupProvider: FC<PopupProviderProps> = ({ children }): ReactElemen
   const popupRef = useRef<HTMLDivElement>(null);
   const [dishDetails, setDishDetails] = useState<Pizza | null>(null);
   const [isDishCardOpen, setDishCardOpen] = useState(false);
+  const [isAuthCardOpen, setAuthCardOpen] = useState(false);
   const { blockScroll, allowScroll } = useScrollBlock();
 
   const openDishCard = useCallback(
@@ -25,22 +26,35 @@ export const PopupProvider: FC<PopupProviderProps> = ({ children }): ReactElemen
     [blockScroll]
   );
 
-  const closeDishCard = useCallback(() => {
+  const openCard = useCallback(
+    (setCardOpen: Dispatch<SetStateAction<boolean>>) => {
+      setCardOpen(true);
+      blockScroll();
+    },
+    [blockScroll]
+  );
+
+  const closeCard = useCallback(() => {
     setDishCardOpen(false);
+    setAuthCardOpen(false);
+
     allowScroll();
   }, [allowScroll]);
 
-  useClickOutside(popupRef, [], closeDishCard);
+  useClickOutside(popupRef, [], closeCard);
 
   const value = useMemo(
     () => ({
       popupRef,
       dishDetails,
       isDishCardOpen,
+      isAuthCardOpen,
+      setAuthCardOpen,
       openDishCard,
-      closeDishCard,
+      openCard,
+      closeCard,
     }),
-    [dishDetails, isDishCardOpen, openDishCard, closeDishCard]
+    [dishDetails, isDishCardOpen, isAuthCardOpen, openDishCard, openCard, closeCard]
   );
 
   return <PopupContext.Provider value={value}>{children}</PopupContext.Provider>;

@@ -10,13 +10,13 @@ interface PopupProps {
 }
 
 export const Popup: FC<PopupProps> = ({ children }): ReactElement => {
-  const { popupRef, closeDishCard } = usePopup();
+  const { popupRef, closeCard } = usePopup();
 
   return (
     <div className={cl.popup}>
       <div className={cl.popup__body}>
         <div ref={popupRef} className={cl.popup__content}>
-          <button className={cl.popup__close} onClick={closeDishCard}>
+          <button className={cl.popup__close} onClick={closeCard}>
             <img alt="close-icon" src={closeIcon} />
           </button>
           {children}
