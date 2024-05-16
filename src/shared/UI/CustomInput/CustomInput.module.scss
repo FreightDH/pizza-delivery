@@ -1,0 +1,35 @@
+@import '@/app/styles';
+
+.wrapper {
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  font-size: 18px;
+  @include adaptiveValue('font-size', 18, 15);
+}
+
+.label {
+  span {
+    position: relative;
+
+    &::after {
+      content: '*';
+      position: absolute;
+      top: -3px;
+      right: -7px;
+
+      color: red;
+      font-size: 12px;
+    }
+  }
+}
+
+.input {
+  max-width: 400px;
+  padding: 10px;
+
+  border: 1px solid #000;
+  border-radius: 5px;
+}
