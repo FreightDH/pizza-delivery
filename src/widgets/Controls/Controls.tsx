@@ -1,19 +1,19 @@
 import type { FC, ReactElement } from 'react';
 
-import { Tabs } from '@/shared/UI/Tabs';
+import { FilterTabs } from '@/shared/UI/FilterTabs';
 import { Sort } from '@/shared/UI/Sort';
 
 import cl from './Controls.module.scss';
 
 interface ControlsProps {
-  tabs: string[];
+  filterTabs: string[];
   sortOptions: string[];
 }
 
-export const Controls: FC<ControlsProps> = ({ tabs, sortOptions }): ReactElement => {
+export const Controls: FC<ControlsProps> = ({ filterTabs, sortOptions }): ReactElement => {
   return (
     <section className={cl.controls}>
-      <Tabs tabs={tabs} />
+      <FilterTabs filterTabs={filterTabs} />
       <Sort sortOptions={sortOptions} />
     </section>
   );
