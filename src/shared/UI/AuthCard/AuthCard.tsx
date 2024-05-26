@@ -9,8 +9,11 @@ import { CustomButton } from '../CustomButton';
 import { CustomMaskInput } from '../CustomInput';
 
 import cl from './AuthCard.module.scss';
+import { useNavigate } from 'react-router-dom';
 
 export const AuthCard: FC = (): ReactElement => {
+  const navigate = useNavigate();
+
   const [phone, setPhone] = useState('');
   const [isPhoneError, setPhoneError] = useState(false);
   const phoneInputRef = useMask({ mask: '+7 (___) ___-__-__', replacement: { _: /\d/ } });
@@ -53,6 +56,7 @@ export const AuthCard: FC = (): ReactElement => {
   const handleAuth = (phone: string) => {
     signIn(phone);
     closeCard();
+    navigate('/profile');
   };
 
   return (

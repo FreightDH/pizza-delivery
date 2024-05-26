@@ -1,7 +1,7 @@
 import type { FC, ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 
-import { cn } from '@/shared/lib';
+import { cn, useBreakpoint } from '@/shared/lib';
 import { useControls } from '@/shared/lib/contexts/ControlsContext';
 import { CustomButton } from '@/shared/UI/CustomButton';
 
@@ -10,10 +10,11 @@ import cl from './CartLink.module.scss';
 
 export const CartLink: FC = (): ReactElement => {
   const { isMenuOpen } = useControls();
+  const breakpoint = useBreakpoint();
 
   return (
     <Link className={cn(cl.cart, { [cl.menuOpen]: isMenuOpen })} to="/cart">
-      {isMenuOpen ? (
+      {isMenuOpen && breakpoint === 'xs' ? (
         <>
           <img alt="cart-icon" src={cartBlackIcon} />
           <span>Корзина</span>

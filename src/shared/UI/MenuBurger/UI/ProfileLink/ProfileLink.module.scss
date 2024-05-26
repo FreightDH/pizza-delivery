@@ -22,6 +22,16 @@
     object-fit: cover;
   }
 
+  &.leave {
+    border: none;
+    border-radius: 0;
+
+    img {
+      width: 45px;
+      height: 45px;
+    }
+  }
+
   &.menuOpen {
     width: auto;
     height: auto;

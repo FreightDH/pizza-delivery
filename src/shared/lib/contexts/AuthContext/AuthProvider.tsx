@@ -1,4 +1,4 @@
-import { useMemo, useState, type FC, type ReactElement, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type FC, type ReactElement, type ReactNode } from 'react';
 import { AuthContext } from './AuthContext';
 
 interface AuthProviderProps {
@@ -27,6 +27,10 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }): ReactElement 
     localStorage.removeItem('isAuth');
   };
 
+  useEffect(() => {
+    setAuth(!!localStorage.getItem('isAuth'));
+  }, []);
+
   const value = useMemo(
     () => ({
       user,
@@ -35,7 +39,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }): ReactElement 
       signIn,
       signOut,
     }),
-    [isAuth]
+    [isAuth, user]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

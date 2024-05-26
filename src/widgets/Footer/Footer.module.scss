@@ -16,7 +16,6 @@
   }
 
   &__column {
-    // max-width: 240px;
     flex: 0 0 240px;
 
     @media (max-width: 880px) {
@@ -24,23 +23,23 @@
 
       display: flex;
       flex-direction: column;
-      align-items: center;
 
-      &:last-child {
-        flex: 1 1 auto;
-        align-items: start;
+      &:first-child {
+        order: 2;
+        align-items: center;
       }
     }
 
     @media (max-width: 560px) {
       flex: 1 1 auto;
+      align-items: start;
 
-      &:not(:first-child) {
-        align-items: start;
+      &:first-child {
+        order: 0;
       }
 
       img {
-        @include adaptiveValue('scale', 1, 0.9, 560, 320);
+        scale: 0.8;
       }
     }
   }

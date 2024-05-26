@@ -1,18 +1,30 @@
 import type { FC, ReactElement } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-import { cn } from '@/shared/lib';
+import { cn, useBreakpoint } from '@/shared/lib';
 import { useControls } from '@/shared/lib/contexts/ControlsContext';
 import { useAuth } from '@/shared/lib/contexts/AuthContext';
 import { usePopup } from '@/shared/lib/contexts/PopupContext';
 
-import { profileIcon } from '../../assets';
+import { profileIcon, profileLeaveIcon } from '../../assets';
 import cl from './ProfileLink.module.scss';
 
 export const ProfileLink: FC = (): ReactElement => {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const urlArray = pathname.split('/');
+  const currentPage = urlArray[urlArray.length - 1];
+
   const { isMenuOpen, setMenuOpen } = useControls();
-  const { isAuth } = useAuth();
+  const breakpoint = useBreakpoint();
+  const { isAuth, signOut } = useAuth();
   const { openCard, setAuthCardOpen } = usePopup();
+
+  const handleSignOut = () => {
+    signOut();
+    setMenuOpen(false);
+    navigate('/');
+  };
 
   if (!isAuth) {
     return (
@@ -29,10 +41,32 @@ export const ProfileLink: FC = (): ReactElement => {
     );
   }
 
+  if (isMenuOpen && breakpoint === 'xs') {
+    return (
+      <>
+        <Link className={cn(cl.profile, {}, [cl.menuOpen])} to="/profile">
+          <img alt="profile-icon" src={profileIcon} />
+          <span>Личный кабинет</span>
+        </Link>
+        <button className={cn(cl.profile, {}, [cl.menuOpen, cl.leave])} onClick={handleSignOut}>
+          <img alt="profile-leave-icon" src={profileLeaveIcon} />
+          <span>Выйти из личного кабинета</span>
+        </button>
+      </>
+    );
+  }
+
+  if (currentPage === 'profile') {
+    return (
+      <button className={cn(cl.profile, {}, [cl.leave])} onClick={handleSignOut}>
+        <img alt="profile-leave-icon" src={profileLeaveIcon} />
+      </button>
+    );
+  }
+
   return (
-    <Link className={cn(cl.profile, { [cl.menuOpen]: isMenuOpen })} to="/profile">
+    <Link className={cn(cl.profile)} to="/profile">
       <img alt="profile-icon" src={profileIcon} />
-      {isMenuOpen && <span>Личный кабинет</span>}
     </Link>
   );
 };
