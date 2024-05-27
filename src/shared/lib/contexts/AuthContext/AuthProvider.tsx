@@ -1,4 +1,8 @@
-import { useEffect, useMemo, useState, type FC, type ReactElement, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useState, type FC, type ReactElement, type ReactNode } from 'react';
+
+import { useAppDispatch } from '../../hooks/reduxHooks';
+import { changeUser, setUserNull } from '@/entities/user/userSlice';
+
 import { AuthContext } from './AuthContext';
 
 interface AuthProviderProps {
@@ -6,26 +10,23 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider: FC<AuthProviderProps> = ({ children }): ReactElement => {
+  const dispatch = useAppDispatch();
   const [isAuth, setAuth] = useState(false);
-  const [user, setUser] = useState<User | null>({
-    firstName: '',
-    lastName: '',
-    birthdayDate: '',
-    phone: '',
-    email: '',
-  });
 
-  const signIn = (phone: string) => {
-    setUser({ phone, firstName: '', lastName: '', birthdayDate: '', email: '' });
-    setAuth(true);
-    localStorage.setItem('isAuth', 'true');
-  };
+  const signIn = useCallback(
+    (phone: string) => {
+      dispatch(changeUser({ field: 'phone', value: phone }));
+      setAuth(true);
+      localStorage.setItem('isAuth', 'true');
+    },
+    [dispatch]
+  );
 
-  const signOut = () => {
-    setUser(null);
+  const signOut = useCallback(() => {
+    dispatch(setUserNull());
     setAuth(false);
     localStorage.removeItem('isAuth');
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     setAuth(!!localStorage.getItem('isAuth'));
@@ -33,13 +34,12 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }): ReactElement 
 
   const value = useMemo(
     () => ({
-      user,
       isAuth,
       setAuth,
       signIn,
       signOut,
     }),
-    [isAuth, user]
+    [isAuth, signIn, signOut]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
