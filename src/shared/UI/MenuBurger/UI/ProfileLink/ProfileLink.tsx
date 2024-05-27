@@ -13,7 +13,7 @@ export const ProfileLink: FC = (): ReactElement => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const urlArray = pathname.split('/');
-  const currentPage = urlArray[urlArray.length - 1];
+  const isProfilePage = urlArray.includes('profile');
 
   const { isMenuOpen, setMenuOpen } = useControls();
   const breakpoint = useBreakpoint();
@@ -44,7 +44,7 @@ export const ProfileLink: FC = (): ReactElement => {
   if (isMenuOpen && breakpoint === 'xs') {
     return (
       <>
-        <Link className={cn(cl.profile, {}, [cl.menuOpen])} to="/profile">
+        <Link className={cn(cl.profile, {}, [cl.menuOpen])} to="/profile/bonuses">
           <img alt="profile-icon" src={profileIcon} />
           <span>Личный кабинет</span>
         </Link>
@@ -56,7 +56,7 @@ export const ProfileLink: FC = (): ReactElement => {
     );
   }
 
-  if (currentPage === 'profile') {
+  if (isProfilePage) {
     return (
       <button className={cn(cl.profile, {}, [cl.leave])} onClick={handleSignOut}>
         <img alt="profile-leave-icon" src={profileLeaveIcon} />
@@ -65,7 +65,7 @@ export const ProfileLink: FC = (): ReactElement => {
   }
 
   return (
-    <Link className={cn(cl.profile)} to="/profile">
+    <Link className={cn(cl.profile)} to="/profile/bonuses">
       <img alt="profile-icon" src={profileIcon} />
     </Link>
   );

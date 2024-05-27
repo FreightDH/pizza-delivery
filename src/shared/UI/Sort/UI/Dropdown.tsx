@@ -2,9 +2,9 @@ import type { FC, ReactElement } from 'react';
 
 import { cn } from '@/shared/lib';
 import { useControls } from '@/shared/lib/contexts/ControlsContext';
+import { useDishes } from '@/shared/lib/contexts/DishesContext';
 
 import cl from './Dropdown.module.scss';
-import { useDishes } from '@/shared/lib/contexts/DishesContext';
 
 interface DropdownProps {
   sortOptions: string[];

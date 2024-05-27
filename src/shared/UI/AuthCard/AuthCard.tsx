@@ -56,7 +56,7 @@ export const AuthCard: FC = (): ReactElement => {
   const handleAuth = (phone: string) => {
     signIn(phone);
     closeCard();
-    navigate('/profile');
+    navigate('/profile/bonuses');
   };
 
   return (
