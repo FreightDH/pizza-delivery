@@ -21,4 +21,5 @@ type User = {
   birthdayDate: string;
   phone: string;
   email: string;
+  bonuses: number;
 };
