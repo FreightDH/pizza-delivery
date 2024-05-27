@@ -1,4 +1,5 @@
-export { useBreakpoint } from './hooks/useBreakpoint.ts';
-export { useScrollBlock } from './hooks/useScrollBlock.ts';
-export { useClickOutside } from './hooks/useClickOutside.ts';
+export { useAppDispatch, useAppSelector } from './hooks/reduxHooks';
+export { useBreakpoint } from './hooks/useBreakpoint';
+export { useScrollBlock } from './hooks/useScrollBlock';
+export { useClickOutside } from './hooks/useClickOutside';
 export { cn } from './classNames';
