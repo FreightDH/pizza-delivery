@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 
 import { Header } from '@/widgets/Header';
 import { Footer } from '@/widgets/Footer';
-import { ProfileTabs } from '@/shared/UI/ProfileTabs';
+import { ProfileTabs } from '@/widgets/ProfileTabs';
 
 import cl from './ProfileLayout.module.scss';
 
