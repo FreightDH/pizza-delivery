@@ -1,2 +1,1 @@
-export { Layout } from './Layout';
-export { ErrorLayout } from './Layout';
+export { Layout, ErrorLayout, ProfileLayout } from './Layout';
