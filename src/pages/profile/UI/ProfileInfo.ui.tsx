@@ -25,13 +25,18 @@ export const ProfileInfo: FC = (): ReactElement => {
     setEditedUser({ ...editedUser, [name]: value });
   };
 
-  const handleClick = () => {
+  const handleEditClick = () => {
     if (isEdit) {
       dispatch(setUser({ editedUser }));
       setEdit(false);
     } else {
       setEdit(true);
     }
+  };
+
+  const handleCancelClick = () => {
+    setEditedUser(user);
+    setEdit(false);
   };
 
   return (
@@ -78,7 +83,10 @@ export const ProfileInfo: FC = (): ReactElement => {
           onChange={handleChange}
         />
       </div>
-      <CustomButton onClick={handleClick}>{isEdit ? 'Сохранить' : 'Редактировать'}</CustomButton>
+      <div className={cl.info__buttons}>
+        <CustomButton onClick={handleEditClick}>{isEdit ? 'Сохранить' : 'Редактировать'}</CustomButton>
+        {isEdit && <CustomButton onClick={handleCancelClick}>Отмена</CustomButton>}
+      </div>
     </div>
   );
 };

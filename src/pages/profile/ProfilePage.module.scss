@@ -58,6 +58,12 @@
       }
     }
   }
+
+  &__buttons {
+    display: flex;
+    gap: 20px;
+    @include adaptiveValue('gap', 20, 10);
+  }
 }
 
 .history {
