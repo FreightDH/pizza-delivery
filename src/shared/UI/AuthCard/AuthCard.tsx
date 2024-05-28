@@ -1,4 +1,5 @@
 import { useState, type ChangeEvent, type FC, type ReactElement } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useMask } from '@react-input/mask';
 
 import { useAuth } from '@/shared/lib/contexts/AuthContext';
@@ -9,7 +10,6 @@ import { CustomButton } from '../CustomButton';
 import { CustomMaskInput } from '../CustomInput';
 
 import cl from './AuthCard.module.scss';
-import { useNavigate } from 'react-router-dom';
 
 export const AuthCard: FC = (): ReactElement => {
   const navigate = useNavigate();

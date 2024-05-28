@@ -18,7 +18,7 @@ type Pizza = {
 type Order = {
   id: number;
   date: string;
-  sum: string;
+  sum: number;
   bonusesOutcome: number;
   bonusesIncome: number;
   dishes: string[];

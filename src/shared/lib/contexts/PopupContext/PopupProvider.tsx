@@ -15,6 +15,7 @@ export const PopupProvider: FC<PopupProviderProps> = ({ children }): ReactElemen
   const [dishDetails, setDishDetails] = useState<Pizza | null>(null);
   const [isDishCardOpen, setDishCardOpen] = useState(false);
   const [isAuthCardOpen, setAuthCardOpen] = useState(false);
+  const [isHistoryOrderCardOpen, setHistoryOrderCardOpen] = useState(false);
   const { blockScroll, allowScroll } = useScrollBlock();
 
   const openDishCard = useCallback(
@@ -37,6 +38,7 @@ export const PopupProvider: FC<PopupProviderProps> = ({ children }): ReactElemen
   const closeCard = useCallback(() => {
     setDishCardOpen(false);
     setAuthCardOpen(false);
+    setHistoryOrderCardOpen(false);
 
     allowScroll();
   }, [allowScroll]);
@@ -49,12 +51,14 @@ export const PopupProvider: FC<PopupProviderProps> = ({ children }): ReactElemen
       dishDetails,
       isDishCardOpen,
       isAuthCardOpen,
+      isHistoryOrderCardOpen,
       setAuthCardOpen,
+      setHistoryOrderCardOpen,
       openDishCard,
       openCard,
       closeCard,
     }),
-    [dishDetails, isDishCardOpen, isAuthCardOpen, openDishCard, openCard, closeCard]
+    [dishDetails, isDishCardOpen, isAuthCardOpen, isHistoryOrderCardOpen, openDishCard, openCard, closeCard]
   );
 
   return <PopupContext.Provider value={value}>{children}</PopupContext.Provider>;
