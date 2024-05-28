@@ -1,14 +1,29 @@
+@import '@/app/styles';
+
 .tabs {
   margin: 25px 0px 35px 0px;
+  @include adaptiveValue('margin-top', 25, 15);
+  @include adaptiveValue('margin-bottom', 35, 20);
   display: flex;
   gap: 15px;
+  @include adaptiveValue('gap', 15, 10);
 
   border-bottom: 2px solid #ffdf8c;
+
+  @media (max-width: 500px) {
+    padding: 0px 0px 15px 0px;
+    flex-direction: column;
+  }
 }
 
 .tab {
   padding: 12px 25px;
+  @include adaptiveValue('padding-top', 12, 9);
+  @include adaptiveValue('padding-bottom', 12, 7);
+  @include adaptiveValue('padding-left', 25, 10);
+  @include adaptiveValue('padding-right', 25, 10);
   height: 35px;
+  @include adaptiveValue('height', 35, 30);
 
   background-color: #f3f3f3;
   border-radius: 15px 15px 0 0;
@@ -20,5 +35,9 @@
   &.active {
     background-color: #ffdf8c;
     font-weight: 700;
+  }
+
+  @media (max-width: 500px) {
+    border-radius: 0px;
   }
 }

@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  @include adaptiveValue('gap', 10, 5);
 
   font-size: 18px;
   @include adaptiveValue('font-size', 18, 15);
@@ -29,6 +30,10 @@
 .input {
   max-width: 400px;
   padding: 10px;
+  @include adaptiveValue('padding-top', 10, 7);
+  @include adaptiveValue('padding-bottom', 10, 7);
+  @include adaptiveValue('padding-left', 10, 7);
+  @include adaptiveValue('padding-right', 10, 7);
 
   border: 1px solid #000;
   border-radius: 5px;

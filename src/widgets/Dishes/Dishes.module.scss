@@ -31,8 +31,13 @@
       flex-wrap: wrap;
     }
 
+    @media (max-width: $mobile) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
     @media (max-width: 570px) {
-      justify-content: center;
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 }

@@ -44,7 +44,13 @@ export const ProfileLink: FC = (): ReactElement => {
   if (isMenuOpen && breakpoint === 'xs') {
     return (
       <>
-        <Link className={cn(cl.profile, {}, [cl.menuOpen])} to="/profile/bonuses">
+        <Link
+          className={cn(cl.profile, {}, [cl.menuOpen])}
+          to="/profile/bonuses"
+          onClick={() => {
+            setMenuOpen(false);
+          }}
+        >
           <img alt="profile-icon" src={profileIcon} />
           <span>Личный кабинет</span>
         </Link>
