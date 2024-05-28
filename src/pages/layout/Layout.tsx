@@ -22,7 +22,7 @@ export const ProfileLayout: FC = (): ReactElement => {
     <>
       <Header />
       <main className={cl.page}>
-        <div className="page__container">
+        <div className={cl.page__container}>
           <div className={cl.page__body}>
             <h1 className={cl.page__title}>Личный кабинет</h1>
             <ProfileTabs />

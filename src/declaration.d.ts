@@ -15,6 +15,15 @@ type Pizza = {
   isHot?: boolean;
 };
 
+type Order = {
+  id: number;
+  date: string;
+  sum: string;
+  bonusesOutcome: number;
+  bonusesIncome: number;
+  dishes: string[];
+};
+
 type User = {
   firstName: string;
   lastName: string;
@@ -22,4 +31,5 @@ type User = {
   phone: string;
   email: string;
   bonuses: number;
+  ordersHistory: Order[];
 };

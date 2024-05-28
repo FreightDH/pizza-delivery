@@ -4,6 +4,10 @@
   padding: 40px 0px 0px 0px;
   @include adaptiveValue('padding-top', 40, 20);
 
+  &__container {
+    max-width: 1200px !important;
+  }
+
   &__body {
     display: flex;
     flex-direction: column;
@@ -11,5 +15,6 @@
 
   &__title {
     font-size: 28px;
+    @include adaptiveValue('font-size', 28, 22);
   }
 }

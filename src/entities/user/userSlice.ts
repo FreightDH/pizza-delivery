@@ -5,13 +5,31 @@ interface StateType {
 }
 
 // user: {
-//   firstName: 'Максим',
-//   lastName: 'Золотков',
-//   birthdayDate: '19.04.2003',
-//   phone: '',
-//   email: 'maxim.zolotkov@yandex.ru',
-//   bonuses: 0,
-// }
+//   firstName: 'Максим';
+//   lastName: 'Золотков';
+//   birthdayDate: '19.04.2003';
+//   phone: '';
+//   email: 'maxim.zolotkov@yandex.ru';
+//   bonuses: 0;
+//   ordersHistory: [
+//     {
+//       id: 1,
+//       date: '16.04.2024 15:36';
+//       sum: '1650';
+//       bonusesOutcome: 0;
+//       bonusesIncome: 82.5;
+//       dishes: ['Пепперонни 40см, традиционное тесто', 'Сырный цыпленок 30см, традиционное тесто'];
+//     },
+//     {
+//       id: 2,
+//       date: '15.03.2024 12:43';
+//       sum: '925';
+//       bonusesOutcome: 0;
+//       bonusesIncome: 46;
+//       dishes: ['Пепперонни 40см, традиционное тесто', 'Сырный цыпленок 30см, традиционное тесто'];
+//     },
+//   ];
+// };
 
 const initialState: StateType = {
   user: {
@@ -21,6 +39,24 @@ const initialState: StateType = {
     phone: '',
     email: '',
     bonuses: 0,
+    ordersHistory: [
+      {
+        id: 1,
+        date: '16.04.2024 15:36',
+        sum: '1650',
+        bonusesOutcome: 0,
+        bonusesIncome: 82.5,
+        dishes: ['Пепперонни 40см, традиционное тесто', 'Сырный цыпленок 30см, традиционное тесто'],
+      },
+      {
+        id: 2,
+        date: '15.03.2024 12:43',
+        sum: '925',
+        bonusesOutcome: 0,
+        bonusesIncome: 46,
+        dishes: ['Пепперонни 40см, традиционное тесто', 'Сырный цыпленок 30см, традиционное тесто'],
+      },
+    ],
   },
 };
 
@@ -44,6 +80,7 @@ export const userSlice = createSlice({
         phone: '',
         email: '',
         bonuses: 0,
+        ordersHistory: [],
       };
     },
   },
