@@ -1,21 +1,20 @@
 import type { FC, ReactElement } from 'react';
 
-import type { Order } from '@/entities/order';
+import { repeatOrder, type Order } from '@/entities/order';
 import { usePopup } from '@/shared/lib/contexts/PopupContext';
 
 import { repeatIcon, showIcon } from './assets';
 import cl from './HistoryOrder.module.scss';
+import { useAppDispatch } from '@/shared/lib';
 
 interface HistoryOrderProps {
   order: Order;
 }
 
 export const HistoryOrder: FC<HistoryOrderProps> = ({ order }): ReactElement => {
-  const { date, sum, bonusesIncome, bonusesOutcome, dishes } = order;
+  const dispatch = useAppDispatch();
+  const { date, sum, bonusesIncome, bonusesOutcome } = order;
   const { openHistoryOrderCard } = usePopup();
-
-  const orderDetailsDishes = Object.entries(dishes).map((dish) => ({ name: dish[0], count: dish[1].count }));
-  const orderDetails = { dishes: orderDetailsDishes, sum };
 
   return (
     <div className={cl.order}>
@@ -36,10 +35,10 @@ export const HistoryOrder: FC<HistoryOrderProps> = ({ order }): ReactElement => 
         <div className={cl.item__info}>{bonusesIncome}</div>
       </div>
       <div className={cl.order__buttons}>
-        <button className={cl.btn} onClick={() => openHistoryOrderCard(orderDetails)}>
+        <button className={cl.btn} onClick={() => openHistoryOrderCard(order)}>
           <img alt="show-icon" src={showIcon} />
         </button>
-        <button className={cl.btn}>
+        <button className={cl.btn} onClick={() => dispatch(repeatOrder({ order }))}>
           <img alt="repeat-icon" src={repeatIcon} />
         </button>
       </div>

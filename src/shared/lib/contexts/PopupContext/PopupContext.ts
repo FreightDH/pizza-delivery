@@ -1,7 +1,7 @@
 import type { Dispatch, RefObject, SetStateAction } from 'react';
 import { createContext } from 'react';
 
-import type { OrderDetails } from '@/entities/order';
+import type { Order } from '@/entities/order';
 
 interface PopupContextProps {
   popupRef: RefObject<HTMLDivElement> | null;
@@ -14,8 +14,8 @@ interface PopupContextProps {
   setAuthCardOpen: Dispatch<SetStateAction<boolean>>;
 
   isHistoryOrderCardOpen: boolean;
-  orderDetails: OrderDetails | null;
-  openHistoryOrderCard: (details: OrderDetails) => void;
+  orderDetails: Order | null;
+  openHistoryOrderCard: (order: Order) => void;
 
   openCard: (setCardOpen: Dispatch<SetStateAction<boolean>>) => void;
   closeCard: () => void;

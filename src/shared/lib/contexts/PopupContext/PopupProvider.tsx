@@ -4,7 +4,7 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 import { useScrollBlock } from '../../hooks/useScrollBlock';
 import { useClickOutside } from '../../hooks/useClickOutside';
 
-import type { OrderDetails } from '@/entities/order';
+import type { Order } from '@/entities/order';
 
 import { PopupContext } from './PopupContext';
 
@@ -21,7 +21,7 @@ export const PopupProvider: FC<PopupProviderProps> = ({ children }): ReactElemen
   const [isAuthCardOpen, setAuthCardOpen] = useState(false);
 
   const [isHistoryOrderCardOpen, setHistoryOrderCardOpen] = useState(false);
-  const [orderDetails, setOrderDetails] = useState<OrderDetails | null>(null);
+  const [orderDetails, setOrderDetails] = useState<Order | null>(null);
 
   const { blockScroll, allowScroll } = useScrollBlock();
 
@@ -35,8 +35,8 @@ export const PopupProvider: FC<PopupProviderProps> = ({ children }): ReactElemen
   );
 
   const openHistoryOrderCard = useCallback(
-    (details: OrderDetails) => {
-      setOrderDetails(details);
+    (order: Order) => {
+      setOrderDetails(order);
       setHistoryOrderCardOpen(true);
       blockScroll();
     },

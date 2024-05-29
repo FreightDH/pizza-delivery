@@ -1,3 +1,4 @@
+import { chickenCheese, pepperoni } from '@/shared/lib/contexts/DishesContext/assets';
 import { createSlice } from '@reduxjs/toolkit';
 
 interface StateType {
@@ -20,13 +21,15 @@ interface StateType {
 //       bonusesIncome: 82.5,
 //       dishesCount: 2,
 //       dishes: {
-//         'Пепперонни, 40см, традиционное тесто': {
-//           count: 1,
-//           price: 925,
+//         'Пепперони, 40см, традиционное тесто': {
+//           count: 2,
+//           price: 1850,
+//           img: pepperoni,
 //         },
 //         'Сырный цыпленок, 30см, традиционное тесто': {
 //           count: 1,
 //           price: 725,
+//           img: chickenCheese,
 //         },
 //       },
 //     },
@@ -38,9 +41,10 @@ interface StateType {
 //       bonusesIncome: 46,
 //       dishesCount: 1,
 //       dishes: {
-//         'Пепперонни, 40см, традиционное тесто': {
-//           count: 1,
-//           price: 925,
+//         'Пепперони, 40см, традиционное тесто': {
+//           count: 2,
+//           price: 1850,
+//           img: pepperoni,
 //         },
 //       },
 //     },
@@ -69,32 +73,35 @@ const initialState: StateType = {
       {
         id: 1,
         date: '16.04.2024 15:36',
-        sum: 1650,
+        sum: 2575,
         bonusesOutcome: 0,
         bonusesIncome: 82.5,
-        dishesCount: 2,
+        dishesCount: 3,
         dishes: {
           'Пепперони, 40см, традиционное тесто': {
-            count: 1,
-            price: 925,
+            count: 2,
+            price: 1850,
+            img: pepperoni,
           },
           'Сырный цыпленок, 30см, традиционное тесто': {
             count: 1,
             price: 725,
+            img: chickenCheese,
           },
         },
       },
       {
         id: 2,
         date: '15.03.2024 12:43',
-        sum: 925,
+        sum: 1850,
         bonusesOutcome: 0,
-        bonusesIncome: 46,
-        dishesCount: 1,
+        bonusesIncome: 92.5,
+        dishesCount: 2,
         dishes: {
-          'Пепперонни, 40см, традиционное тесто': {
-            count: 1,
-            price: 925,
+          'Пепперони, 40см, традиционное тесто': {
+            count: 2,
+            price: 1850,
+            img: pepperoni,
           },
         },
       },

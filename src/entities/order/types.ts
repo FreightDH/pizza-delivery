@@ -13,8 +13,3 @@ export type Order = {
     };
   };
 };
-
-export type OrderDetails = {
-  dishes: { name: string; count: number }[];
-  sum: number;
-};
