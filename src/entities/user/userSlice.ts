@@ -15,7 +15,7 @@ interface StateType {
 //     {
 //       id: 1,
 //       date: '16.04.2024 15:36';
-//       sum: '1650';
+//       sum: 1650;
 //       bonusesOutcome: 0;
 //       bonusesIncome: 82.5;
 //       dishes: ['Пепперонни 40см, традиционное тесто', 'Сырный цыпленок 30см, традиционное тесто'];
@@ -23,7 +23,7 @@ interface StateType {
 //     {
 //       id: 2,
 //       date: '15.03.2024 12:43';
-//       sum: '925';
+//       sum: 925;
 //       bonusesOutcome: 0;
 //       bonusesIncome: 46;
 //       dishes: ['Пепперонни 40см, традиционное тесто', 'Сырный цыпленок 30см, традиционное тесто'];
@@ -31,30 +31,47 @@ interface StateType {
 //   ];
 // };
 
+// user: {
+//   firstName: '',
+//   lastName: '',
+//   birthdayDate: '',
+//   phone: '',
+//   email: '',
+//   bonuses: 0,
+//   ordersHistory: [],
+// },
+
 const initialState: StateType = {
   user: {
-    firstName: '',
-    lastName: '',
-    birthdayDate: '',
+    firstName: 'Максим',
+    lastName: 'Золотков',
+    birthdayDate: '19.04.2003',
     phone: '',
-    email: '',
+    email: 'maxim.zolotkov@yandex.ru',
     bonuses: 0,
     ordersHistory: [
       {
         id: 1,
         date: '16.04.2024 15:36',
-        sum: '1650',
+        sum: 1650,
         bonusesOutcome: 0,
         bonusesIncome: 82.5,
-        dishes: ['Пепперонни 40см, традиционное тесто', 'Сырный цыпленок 30см, традиционное тесто'],
+        dishesCount: 2,
+        dishes: {
+          'Пепперонни 40см, традиционное тесто': 1,
+          'Сырный цыпленок 30см, традиционное тесто': 1,
+        },
       },
       {
         id: 2,
         date: '15.03.2024 12:43',
-        sum: '925',
+        sum: 925,
         bonusesOutcome: 0,
         bonusesIncome: 46,
-        dishes: ['Пепперонни 40см, традиционное тесто', 'Сырный цыпленок 30см, традиционное тесто'],
+        dishesCount: 1,
+        dishes: {
+          'Пепперонни 40см, традиционное тесто': 1,
+        },
       },
     ],
   },
