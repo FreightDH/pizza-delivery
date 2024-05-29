@@ -13,12 +13,13 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    @include adaptiveValue('gap', 15, 10);
   }
 
   &__header {
     display: flex;
     justify-content: space-between;
-    align-items: end;
+    align-items: center;
   }
 
   &__title {
@@ -27,10 +28,13 @@
     gap: 10px;
 
     font-size: 32px;
+    @include adaptiveValue('font-size', 32, 22);
 
     img {
       width: 30px;
       height: 30px;
+      @include adaptiveValue('width', 30, 20);
+      @include adaptiveValue('height', 30, 20);
       object-fit: cover;
     }
   }
@@ -39,8 +43,10 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    @include adaptiveValue('gap', 10, 5);
 
     font-size: 16px;
+    @include adaptiveValue('font-size', 16, 14);
 
     img {
       width: 20px;
@@ -93,12 +99,19 @@
 
   &__footer {
     padding: 15px 0px 0px 0px;
+    @include adaptiveValue('padding-top', 15, 10);
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: $mobileSmall) {
+      flex-direction: column;
+      gap: 10px;
+    }
 
     button {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
     }
   }
@@ -106,10 +119,10 @@
 
 .order {
   &__dishes {
-    min-height: 40vh;
     display: flex;
     flex-direction: column;
     gap: 30px;
+    @include adaptiveValue('gap', 30, 15);
   }
 
   &__info {
@@ -118,6 +131,12 @@
     align-items: center;
 
     font-weight: 400;
+    @include adaptiveValue('font-size', 22, 16);
+
+    @media (max-width: $mobileSmall) {
+      flex-direction: column;
+      gap: 5px;
+    }
   }
 
   &__count {

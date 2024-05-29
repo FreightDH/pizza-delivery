@@ -3,7 +3,8 @@
 .btn {
   min-width: 140px;
   @include adaptiveValue('min-width', 140, 90);
-  max-height: 40px;
+  height: 40px;
+  @include adaptiveValue('height', 40, 35);
   display: inline-block;
   padding: 10px 20px;
   @include adaptiveValue('padding-top', 10, 7);
@@ -25,6 +26,7 @@
 
     color: #fff;
     font-size: 18px;
+    @include adaptiveValue('font-size', 18, 13);
     background-color: #fe5f1e;
 
     &.black {
