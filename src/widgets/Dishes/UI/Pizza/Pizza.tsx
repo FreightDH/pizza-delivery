@@ -32,10 +32,10 @@ export const Pizza: FC<PizzaProps> = ({ pizza }): ReactElement => {
   };
 
   const handleAddClick = () => {
-    const dish = `${name} ${size}, ${dough}`;
+    const dish = `${name}, ${size}, ${dough}`;
     const finalPrice = size === '30 см' ? price[0] : price[1];
 
-    dispatch(addDish({ dish, price: finalPrice }));
+    dispatch(addDish({ dish, price: finalPrice, img }));
   };
 
   return (

@@ -6,7 +6,11 @@ export type Order = {
   bonusesIncome: number;
   dishesCount: number;
   dishes: {
-    [name: string]: number;
+    [name: string]: {
+      count: number;
+      price: number;
+      img: string;
+    };
   };
 };
 

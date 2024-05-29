@@ -14,7 +14,7 @@ export const HistoryOrder: FC<HistoryOrderProps> = ({ order }): ReactElement => 
   const { date, sum, bonusesIncome, bonusesOutcome, dishes } = order;
   const { openHistoryOrderCard } = usePopup();
 
-  const orderDetailsDishes = Object.entries(dishes).map((dish) => ({ name: dish[0], count: dish[1] }));
+  const orderDetailsDishes = Object.entries(dishes).map((dish) => ({ name: dish[0], count: dish[1].count }));
   const orderDetails = { dishes: orderDetailsDishes, sum };
 
   return (
