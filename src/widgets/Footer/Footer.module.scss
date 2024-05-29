@@ -1,8 +1,8 @@
 @import '@/app/styles';
 
 .footer {
-  padding: 95px 0 25px 0;
-  @include adaptiveValue('padding-top', 95, 25);
+  padding: 55px 0 25px 0;
+  @include adaptiveValue('padding-top', 55, 25);
 
   &__body {
     display: flex;
