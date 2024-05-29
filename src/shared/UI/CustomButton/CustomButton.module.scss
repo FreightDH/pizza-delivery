@@ -27,12 +27,17 @@
     color: #fff;
     font-size: 18px;
     background-color: #fe5f1e;
+
+    &.black {
+      color: #fff;
+      background-color: #282828;
+      border: none;
+    }
   }
 
   &.black {
-    color: #fff;
-    background-color: #282828;
-    border: none;
+    color: #000;
+    border: 1px solid #282828;
   }
 
   @media (hover: hover) {

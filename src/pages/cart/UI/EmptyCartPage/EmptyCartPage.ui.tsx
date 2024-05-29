@@ -18,7 +18,7 @@ export const EmptyCartPage: FC = (): ReactElement => {
           <div className={cl.page__image}>
             <img alt="empty-cart-image" src={emptyCartImage} />
           </div>
-          <CustomButton black to="/">
+          <CustomButton black primary to="/">
             Вернуться на главную
           </CustomButton>
         </div>

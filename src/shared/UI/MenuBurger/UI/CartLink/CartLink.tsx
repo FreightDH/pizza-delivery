@@ -9,12 +9,16 @@ import { cartBlackIcon, cartIcon } from '../../assets';
 import cl from './CartLink.module.scss';
 
 export const CartLink: FC = (): ReactElement => {
-  const { isMenuOpen } = useControls();
+  const { isMenuOpen, setMenuOpen } = useControls();
   const breakpoint = useBreakpoint();
   const order = useAppSelector((state) => state.orderReducer.order);
 
   return (
-    <Link className={cn(cl.cart, { [cl.menuOpen]: isMenuOpen })} to="/cart">
+    <Link
+      className={cn(cl.cart, { [cl.menuOpen]: isMenuOpen })}
+      to="/cart"
+      onClick={() => setMenuOpen(false)}
+    >
       {isMenuOpen && breakpoint === 'xs' ? (
         <>
           <img alt="cart-icon" src={cartBlackIcon} />
