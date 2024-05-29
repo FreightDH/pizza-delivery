@@ -4,6 +4,8 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 import { useScrollBlock } from '../../hooks/useScrollBlock';
 import { useClickOutside } from '../../hooks/useClickOutside';
 
+import type { OrderDetails } from '@/entities/order';
+
 import { PopupContext } from './PopupContext';
 
 interface PopupProviderProps {
@@ -12,16 +14,30 @@ interface PopupProviderProps {
 
 export const PopupProvider: FC<PopupProviderProps> = ({ children }): ReactElement => {
   const popupRef = useRef<HTMLDivElement>(null);
-  const [dishDetails, setDishDetails] = useState<Pizza | null>(null);
+
   const [isDishCardOpen, setDishCardOpen] = useState(false);
+  const [dishDetails, setDishDetails] = useState<Pizza | null>(null);
+
   const [isAuthCardOpen, setAuthCardOpen] = useState(false);
+
   const [isHistoryOrderCardOpen, setHistoryOrderCardOpen] = useState(false);
+  const [orderDetails, setOrderDetails] = useState<OrderDetails | null>(null);
+
   const { blockScroll, allowScroll } = useScrollBlock();
 
   const openDishCard = useCallback(
     (dish: Pizza) => {
       setDishDetails(dish);
       setDishCardOpen(true);
+      blockScroll();
+    },
+    [blockScroll]
+  );
+
+  const openHistoryOrderCard = useCallback(
+    (details: OrderDetails) => {
+      setOrderDetails(details);
+      setHistoryOrderCardOpen(true);
       blockScroll();
     },
     [blockScroll]
@@ -40,6 +56,9 @@ export const PopupProvider: FC<PopupProviderProps> = ({ children }): ReactElemen
     setAuthCardOpen(false);
     setHistoryOrderCardOpen(false);
 
+    setDishDetails(null);
+    setOrderDetails(null);
+
     allowScroll();
   }, [allowScroll]);
 
@@ -48,17 +67,28 @@ export const PopupProvider: FC<PopupProviderProps> = ({ children }): ReactElemen
   const value = useMemo(
     () => ({
       popupRef,
-      dishDetails,
       isDishCardOpen,
-      isAuthCardOpen,
-      isHistoryOrderCardOpen,
-      setAuthCardOpen,
-      setHistoryOrderCardOpen,
+      dishDetails,
       openDishCard,
+      isAuthCardOpen,
+      setAuthCardOpen,
+      isHistoryOrderCardOpen,
+      orderDetails,
+      openHistoryOrderCard,
       openCard,
       closeCard,
     }),
-    [dishDetails, isDishCardOpen, isAuthCardOpen, isHistoryOrderCardOpen, openDishCard, openCard, closeCard]
+    [
+      isDishCardOpen,
+      dishDetails,
+      openDishCard,
+      isAuthCardOpen,
+      isHistoryOrderCardOpen,
+      orderDetails,
+      openHistoryOrderCard,
+      openCard,
+      closeCard,
+    ]
   );
 
   return <PopupContext.Provider value={value}>{children}</PopupContext.Provider>;

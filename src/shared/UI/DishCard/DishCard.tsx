@@ -1,20 +1,29 @@
 import { useState, type FC, type ReactElement } from 'react';
 
+import { useAppDispatch } from '@/shared/lib';
 import { usePopup } from '@/shared/lib/contexts/PopupContext';
+
+import { addDish } from '@/entities/order/orderSlice';
 
 import { CustomButton } from '../CustomButton';
 import { Popup } from '../Popup';
 
 import cl from './DishCard.module.scss';
 
-interface DishCardProps {}
-
-export const DishCard: FC<DishCardProps> = (): ReactElement => {
+export const DishCard: FC = (): ReactElement => {
   const [size, setSize] = useState('30 см');
   const [dough, setDough] = useState('Традиционное');
-  const { dishDetails } = usePopup();
-
+  const { dishDetails, closeCard } = usePopup();
   const { img, name, price, description, weight } = dishDetails as Pizza;
+  const dispatch = useAppDispatch();
+
+  const handleAddClick = () => {
+    const dish = `${name} ${size}, ${dough}`;
+    const finalPrice = size === '30 см' ? price[0] : price[1];
+
+    dispatch(addDish({ dish, price: finalPrice }));
+    closeCard();
+  };
 
   return (
     <Popup>
@@ -63,7 +72,9 @@ export const DishCard: FC<DishCardProps> = (): ReactElement => {
             </div>
           </div>
 
-          <CustomButton>Добавить в корзину за {size === '30 см' ? price[0] : price[1]} ₽</CustomButton>
+          <CustomButton onClick={handleAddClick}>
+            Добавить в корзину за {size === '30 см' ? price[0] : price[1]} ₽
+          </CustomButton>
         </div>
       </div>
     </Popup>

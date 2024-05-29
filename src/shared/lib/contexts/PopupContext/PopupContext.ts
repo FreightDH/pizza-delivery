@@ -1,6 +1,8 @@
 import type { Dispatch, RefObject, SetStateAction } from 'react';
 import { createContext } from 'react';
 
+import type { OrderDetails } from '@/entities/order';
+
 interface PopupContextProps {
   popupRef: RefObject<HTMLDivElement> | null;
 
@@ -12,7 +14,8 @@ interface PopupContextProps {
   setAuthCardOpen: Dispatch<SetStateAction<boolean>>;
 
   isHistoryOrderCardOpen: boolean;
-  setHistoryOrderCardOpen: Dispatch<SetStateAction<boolean>>;
+  orderDetails: OrderDetails | null;
+  openHistoryOrderCard: (details: OrderDetails) => void;
 
   openCard: (setCardOpen: Dispatch<SetStateAction<boolean>>) => void;
   closeCard: () => void;
@@ -21,12 +24,13 @@ interface PopupContextProps {
 export const PopupContext = createContext<PopupContextProps>({
   popupRef: null,
   isDishCardOpen: false,
-  isAuthCardOpen: false,
-  isHistoryOrderCardOpen: false,
-  setAuthCardOpen: () => {},
-  setHistoryOrderCardOpen: () => {},
   dishDetails: null,
   openDishCard: () => {},
+  isAuthCardOpen: false,
+  setAuthCardOpen: () => {},
+  isHistoryOrderCardOpen: false,
+  orderDetails: null,
+  openHistoryOrderCard: () => {},
   openCard: () => {},
   closeCard: () => {},
 });

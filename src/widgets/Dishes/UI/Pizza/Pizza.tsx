@@ -1,9 +1,11 @@
 import type { MouseEvent } from 'react';
 import { useState, type FC, type ReactElement } from 'react';
 
-import { cn } from '@/shared/lib';
+import { cn, useAppDispatch } from '@/shared/lib';
 import { usePopup } from '@/shared/lib/contexts/PopupContext';
 import { CustomButton } from '@/shared/UI/CustomButton';
+
+import { addDish } from '@/entities/order/orderSlice';
 
 import { leafIcon, pepperIcon } from '../assets';
 import cl from './Pizza.module.scss';
@@ -17,6 +19,7 @@ export const Pizza: FC<PizzaProps> = ({ pizza }): ReactElement => {
   const [size, setSize] = useState('30 см');
   const [dough, setDough] = useState('тонкое');
   const { openDishCard } = usePopup();
+  const dispatch = useAppDispatch();
 
   const handleControlsClick = (e: MouseEvent<HTMLButtonElement>, type: 'dought' | 'size') => {
     const { textContent } = e.target as HTMLElement;
@@ -26,6 +29,13 @@ export const Pizza: FC<PizzaProps> = ({ pizza }): ReactElement => {
     } else {
       setSize(textContent!);
     }
+  };
+
+  const handleAddClick = () => {
+    const dish = `${name} ${size}, ${dough}`;
+    const finalPrice = size === '30 см' ? price[0] : price[1];
+
+    dispatch(addDish({ dish, price: finalPrice }));
   };
 
   return (
@@ -70,7 +80,10 @@ export const Pizza: FC<PizzaProps> = ({ pizza }): ReactElement => {
       </div>
       <div className={cl.pizza__footer}>
         <div className={cl.pizza__price}>{size === '30 см' ? price[0] : price[1]} ₽</div>
-        <CustomButton className={cl.pizza__btn}>+ Добавить</CustomButton>
+        <CustomButton onClick={handleAddClick}>
+          + Добавить
+          {/* {addedCount > 0 && <span>{addedCount}</span>} */}
+        </CustomButton>
       </div>
     </div>
   );
