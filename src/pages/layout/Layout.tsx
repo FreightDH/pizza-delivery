@@ -30,17 +30,7 @@ export const ProfileLayout: FC = (): ReactElement => {
           </div>
         </div>
       </main>
-
       <Footer />
-    </>
-  );
-};
-
-export const CartLayout: FC = (): ReactElement => {
-  return (
-    <>
-      <Header />
-      <Outlet />
     </>
   );
 };

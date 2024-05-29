@@ -1,7 +1,7 @@
 import type { FC, ReactElement } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import { CartLayout, ErrorLayout, Layout, ProfileLayout } from '@/pages/layout';
+import { ErrorLayout, Layout, ProfileLayout } from '@/pages/layout';
 
 import { HomePageRoute } from '@/pages/home';
 import { ProfileBonusesRoute, ProfileHistoryRoute, ProfileInfoRoute } from '@/pages/profile';
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/cart',
-    element: <CartLayout />,
+    element: <Layout />,
     children: [CartPageRoute],
   },
   {

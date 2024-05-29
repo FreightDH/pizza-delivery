@@ -25,7 +25,7 @@ const initialState: StateType = {
     bonusesIncome: 128.75,
     dishesCount: 3,
     dishes: {
-      'Пепперонни, 40см, традиционное тесто': {
+      'Пепперони, 40см, традиционное тесто': {
         count: 2,
         price: 1850,
         img: pepperoni,

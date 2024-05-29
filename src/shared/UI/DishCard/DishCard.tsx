@@ -18,7 +18,7 @@ export const DishCard: FC = (): ReactElement => {
   const dispatch = useAppDispatch();
 
   const handleAddClick = () => {
-    const dish = `${name}, ${size}, ${dough}`;
+    const dish = `${name}, ${size}, ${dough.toLowerCase()} тесто`;
     const finalPrice = size === '30 см' ? price[0] : price[1];
 
     dispatch(addDish({ dish, price: finalPrice, img }));
