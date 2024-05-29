@@ -54,6 +54,11 @@ export const AuthCard: FC = (): ReactElement => {
   };
 
   const handleAuth = (phone: string) => {
+    if (code.length < 3) {
+      setCodeError(true);
+      return;
+    }
+
     signIn(phone);
     closeCard();
     navigate('/profile/bonuses');

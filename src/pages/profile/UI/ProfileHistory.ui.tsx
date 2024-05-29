@@ -1,11 +1,11 @@
 import { useAppSelector } from '@/shared/lib';
 import { type FC, type ReactElement } from 'react';
 
+import { usePopup } from '@/shared/lib/contexts/PopupContext';
 import { HistoryOrder } from '@/widgets/HistoryOrder';
+import { HistoryOrderCard } from '@/shared/UI/HistoryOrderCard';
 
 import cl from '../ProfilePage.module.scss';
-import { usePopup } from '@/shared/lib/contexts/PopupContext';
-import { HistoryOrderCard } from '@/shared/UI/HistoryOrderCard';
 
 export const ProfileHistory: FC = (): ReactElement => {
   const user = useAppSelector((state) => state.userReducer.user);
