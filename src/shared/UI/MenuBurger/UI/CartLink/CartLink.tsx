@@ -25,7 +25,7 @@ export const CartLink: FC = (): ReactElement => {
           <span>Корзина</span>
         </>
       ) : (
-        <CustomButton primary>
+        <CustomButton primary style={{ minHeight: '45px' }}>
           <div className={cl.button__body}>
             <div>{order.sum} ₽</div>
             <div className={cl.button__divider}></div>

@@ -47,6 +47,42 @@
       height: 20px;
       object-fit: cover;
     }
+
+    span {
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -3px;
+        left: 50%;
+        background-color: #000;
+        transition: all 0.3s ease 0s;
+      }
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        span {
+          &::after {
+            width: 100%;
+            left: 0;
+          }
+        }
+      }
+    }
+
+    @media (hover: none) {
+      &:active {
+        span {
+          &::after {
+            width: 100%;
+            left: 0;
+          }
+        }
+      }
+    }
   }
 
   &__order {
@@ -59,12 +95,21 @@
     padding: 15px 0px 0px 0px;
     display: flex;
     justify-content: space-between;
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
   }
 }
 
 .order {
   &__dishes {
     min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
   }
 
   &__info {

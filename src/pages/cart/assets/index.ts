@@ -1,4 +1,5 @@
+import arrowIcon from './arrow.svg';
 import cartIcon from './cart.svg';
 import trashIcon from './trash.svg';
 
-export { cartIcon, trashIcon };
+export { arrowIcon, cartIcon, trashIcon };

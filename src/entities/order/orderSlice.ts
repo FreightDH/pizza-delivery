@@ -20,14 +20,14 @@ const initialState: StateType = {
   order: {
     id: 1,
     date: '16.04.2024 15:36',
-    sum: 1650,
+    sum: 2575,
     bonusesOutcome: 0,
-    bonusesIncome: 82.5,
-    dishesCount: 2,
+    bonusesIncome: 128.75,
+    dishesCount: 3,
     dishes: {
       'Пепперонни, 40см, традиционное тесто': {
-        count: 1,
-        price: 925,
+        count: 2,
+        price: 1850,
         img: pepperoni,
       },
       'Сырный цыпленок, 30см, традиционное тесто': {
@@ -62,8 +62,49 @@ export const orderSlice = createSlice({
       state.order.bonusesIncome = state.order.sum / 20;
       state.order.dishesCount += 1;
     },
+    removeDish: (state, action) => {
+      const { dish } = action.payload;
+      const dishCount = state.order.dishes[dish].count;
+      const dishPrice = state.order.dishes[dish].price;
+
+      state.order.dishesCount -= dishCount;
+      state.order.sum -= dishPrice;
+
+      delete state.order.dishes[dish];
+    },
+    decrementDish: (state, action) => {
+      const { dish } = action.payload;
+      const priceForOneDish = state.order.dishes[dish].price / state.order.dishes[dish].count;
+
+      state.order.dishes[dish].count -= 1;
+      state.order.dishes[dish].price -= priceForOneDish;
+
+      state.order.dishesCount -= 1;
+      state.order.sum -= priceForOneDish;
+    },
+    incrementDish: (state, action) => {
+      const { dish } = action.payload;
+      const priceForOneDish = state.order.dishes[dish].price / state.order.dishes[dish].count;
+
+      state.order.dishes[dish].count += 1;
+      state.order.dishes[dish].price += priceForOneDish;
+
+      state.order.dishesCount += 1;
+      state.order.sum += priceForOneDish;
+    },
+    resetOrder: (state) => {
+      state.order = {
+        id: 0,
+        date: '',
+        sum: 0,
+        bonusesOutcome: 0,
+        bonusesIncome: 0,
+        dishesCount: 0,
+        dishes: {},
+      };
+    },
   },
 });
 
-export const { addDish } = orderSlice.actions;
+export const { addDish, removeDish, decrementDish, incrementDish, resetOrder } = orderSlice.actions;
 export const orderReducer = orderSlice.reducer;
