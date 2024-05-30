@@ -14,7 +14,7 @@ export const PageNotFound: FC = (): ReactElement => {
             Похоже такой страницы не существует! <br />
             <span>Вернитесь на главную и попробуйте еще раз.</span>
           </p>
-          <CustomButton black to="/">
+          <CustomButton black primary to="/">
             Вернуться на главную
           </CustomButton>
         </div>

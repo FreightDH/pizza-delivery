@@ -12,7 +12,6 @@ export const CartLink: FC = (): ReactElement => {
   const { isMenuOpen, setMenuOpen } = useControls();
   const breakpoint = useBreakpoint();
   const order = useAppSelector((state) => state.orderReducer.order);
-  // console.log(order);
 
   return (
     <Link

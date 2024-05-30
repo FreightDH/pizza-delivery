@@ -1,8 +1,9 @@
 import type { FC, ReactElement } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { usePopup } from '@/shared/lib/contexts/PopupContext';
 import { useAppDispatch } from '@/shared/lib';
 import { repeatOrder } from '@/entities/order';
+import { usePopup } from '@/shared/lib/contexts/PopupContext';
 
 import { Popup } from '../Popup';
 import { CustomButton } from '../CustomButton';
@@ -11,12 +12,13 @@ import cl from './HistoryOrderCard.module.scss';
 
 export const HistoryOrderCard: FC = (): ReactElement => {
   const dispatch = useAppDispatch();
-  const { orderDetails, closeCard } = usePopup();
+  const navigate = useNavigate();
+  const { orderDetails } = usePopup();
   const dishes = Object.entries(orderDetails!.dishes);
 
   const handleClick = () => {
     dispatch(repeatOrder({ order: orderDetails }));
-    closeCard();
+    navigate('/cart');
   };
 
   return (
