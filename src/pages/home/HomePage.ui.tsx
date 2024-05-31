@@ -6,6 +6,8 @@ import { Controls } from '@/widgets/Controls';
 import { Dishes } from '@/widgets/Dishes';
 import { DishCard } from '@/shared/UI/DishCard';
 import { AuthCard } from '@/shared/UI/AuthCard';
+import { ReferenceCard } from '@/shared/UI/ReferenceCard';
+import { ReferenceButton } from '@/shared/UI/ReferenceButton';
 
 import cl from './HomePage.module.scss';
 
@@ -13,15 +15,19 @@ const filterTabs = ['Все', 'Мясные', 'Вегетарианские', '�
 const sortOptions = ['популярности', 'цене', 'названию'];
 
 export const HomePage: FC = (): ReactElement => {
-  const { isDishCardOpen, isAuthCardOpen } = usePopup();
+  const { isDishCardOpen, isAuthCardOpen, isReferenceCardOpen } = usePopup();
 
   return (
     <main className={cl.page}>
       <div className="page__container">
-        <Controls filterTabs={filterTabs} sortOptions={sortOptions} />
-        <Dishes />
-        {isDishCardOpen && <DishCard />}
-        {isAuthCardOpen && <AuthCard />}
+        <div className={cl.page__body}>
+          <Controls filterTabs={filterTabs} sortOptions={sortOptions} />
+          <Dishes />
+          {isDishCardOpen && <DishCard />}
+          {isAuthCardOpen && <AuthCard />}
+          {isReferenceCardOpen && <ReferenceCard />}
+          <ReferenceButton />
+        </div>
       </div>
     </main>
   );
