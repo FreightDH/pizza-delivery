@@ -1,0 +1,17 @@
+.textarea {
+  min-height: 110px;
+  resize: vertical;
+  padding: 15px;
+
+  border: 1px solid #000;
+  border-radius: 5px;
+
+  font-size: 18px;
+
+  &:focus {
+    &::placeholder {
+      color: transparent;
+      transition: all 0.2s ease 0s;
+    }
+  }
+}
