@@ -1,0 +1,129 @@
+@import '@/app/styles';
+
+.page {
+  padding: 40px 0px;
+  @include adaptiveValue('padding-top', 40, 20);
+  @include adaptiveValue('padding-bottom', 40, 20);
+
+  &__container {
+    max-width: 835px !important;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 35px;
+  }
+
+  &__title {
+    font-size: 32px;
+    @include adaptiveValue('font-size', 32, 22);
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+}
+
+.form {
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 35px;
+
+    div {
+      width: 100%;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__payment {
+    padding: 20px 15px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    background-color: #f6f6f6;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+}
+
+.payment {
+  &__title {
+    margin: 0px 0px 10px 0px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__label {
+    padding: 0px 0px 0px 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    input {
+      display: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      top: 5px;
+      left: 0;
+      border: 1.5px solid #8d8d8d;
+      border-radius: 50%;
+      background-color: transparent;
+    }
+
+    &::after {
+      content: '';
+      display: none;
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      top: 9px;
+      left: 4px;
+      border-radius: 50%;
+    }
+
+    &.active {
+      &::before {
+        border: 1.5px solid #000;
+      }
+
+      &::after {
+        display: block;
+        background-color: #000;
+      }
+    }
+  }
+}

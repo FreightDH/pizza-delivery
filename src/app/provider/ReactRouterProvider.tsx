@@ -1,11 +1,12 @@
 import type { FC, ReactElement } from 'react';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { ErrorLayout, Layout, ProfileLayout } from '@/pages/layout';
 
 import { HomePageRoute } from '@/pages/home';
 import { ProfileBonusesRoute, ProfileHistoryRoute, ProfileInfoRoute } from '@/pages/profile';
 import { CartPageRoute } from '@/pages/cart';
+import { OrderPlacementPageRoute } from '@/pages/order-placement';
 import { PageNotFoundRoute, ServerErrorPageRoute } from '@/pages/errors';
 
 const router = createBrowserRouter([
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
     path: '/',
     element: <Layout />,
     children: [HomePageRoute],
+    errorElement: <Navigate to="/error/404" />,
   },
   {
     path: '/profile',
@@ -22,7 +24,7 @@ const router = createBrowserRouter([
   {
     path: '/cart',
     element: <Layout />,
-    children: [CartPageRoute],
+    children: [CartPageRoute, OrderPlacementPageRoute],
   },
   {
     path: '/error',

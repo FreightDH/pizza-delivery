@@ -2,12 +2,12 @@ import { forwardRef, type ComponentProps, type FC, type ReactElement } from 'rea
 import cl from './CustomInput.module.scss';
 
 interface CustomInputProps extends ComponentProps<'input'> {
-  label: string;
+  label?: string;
   required?: boolean;
 }
 
 export const CustomInput: FC<CustomInputProps> = ({
-  label,
+  label = '',
   required = false,
   type = 'text',
   id,
@@ -17,9 +17,11 @@ export const CustomInput: FC<CustomInputProps> = ({
 }): ReactElement => {
   return (
     <div className={cl.wrapper}>
-      <label className={cl.label} htmlFor={id}>
-        {required ? <span>{label}</span> : label}
-      </label>
+      {label && (
+        <label className={cl.label} htmlFor={id}>
+          {required ? <span>{label}</span> : label}
+        </label>
+      )}
       <input className={cl.input} id={id} placeholder={placeholder} type={type} value={value} {...props} />
     </div>
   );
@@ -29,9 +31,11 @@ export const CustomMaskInput: FC<CustomInputProps> = forwardRef(
   ({ label, required = false, type = 'text', id, placeholder, value, ...props }, ref): ReactElement => {
     return (
       <div className={cl.wrapper}>
-        <label className={cl.label} htmlFor={id}>
-          {required ? <span>{label}</span> : label}
-        </label>
+        {label && (
+          <label className={cl.label} htmlFor={id}>
+            {required ? <span>{label}</span> : label}
+          </label>
+        )}
         <input
           ref={ref}
           className={cl.input}

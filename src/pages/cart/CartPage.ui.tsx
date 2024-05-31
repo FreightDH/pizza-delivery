@@ -54,7 +54,9 @@ export const CartPage: FC<CartPageProps> = (): ReactElement => {
               <img alt="arrow-icon" src={arrowIcon} />
               Вернуться назад
             </CustomButton>
-            <CustomButton primary>Оформить заказ</CustomButton>
+            <CustomButton primary to="placement">
+              Оформить заказ
+            </CustomButton>
           </div>
         </div>
       </div>
