@@ -1,22 +1,22 @@
 import type { FC, ReactElement } from 'react';
 
-import { cn } from '@/shared/lib';
+import { cn, useAppDispatch } from '@/shared/lib';
 import { useControls } from '@/shared/lib/contexts/ControlsContext';
-import { useDishes } from '@/shared/lib/contexts/DishesContext';
 
 import cl from './Dropdown.module.scss';
+import { handleSort } from '@/entities/dishes';
 
 interface DropdownProps {
   sortOptions: string[];
 }
 
 export const Dropdown: FC<DropdownProps> = ({ sortOptions }): ReactElement => {
+  const dispatch = useAppDispatch();
   const { isDropdownOpen, setDropdownOpen, dropdownRef, activeSort, setActiveSort } = useControls();
-  const { handleSort } = useDishes();
 
   const handleClick = (option: string) => {
     setActiveSort(option);
-    handleSort(option);
+    dispatch(handleSort({ query: option }));
     setDropdownOpen(false);
   };
 

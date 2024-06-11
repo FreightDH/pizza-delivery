@@ -1,8 +1,7 @@
 import type { FC, ReactElement } from 'react';
 
-import { useBreakpoint } from '@/shared/lib';
+import { useAppSelector, useBreakpoint } from '@/shared/lib';
 import { useControls } from '@/shared/lib/contexts/ControlsContext';
-import { useDishes } from '@/shared/lib/contexts/DishesContext';
 
 import { Pizza } from './UI/Pizza';
 import { PizzaMobile } from './UI/PizzaMobile';
@@ -11,7 +10,7 @@ import cl from './Dishes.module.scss';
 
 export const Dishes: FC = (): ReactElement => {
   const { activeTab } = useControls();
-  const { filteredAndSortedDishes } = useDishes();
+  const dishes = useAppSelector((state) => state.dishesReducer.dishes);
   const breakpoint = useBreakpoint();
 
   return (
@@ -19,7 +18,7 @@ export const Dishes: FC = (): ReactElement => {
       <div className={cl.dishes__body}>
         <h2 className={cl.dishes__title}>{activeTab} пиццы</h2>
         <div className={cl.dishes__list}>
-          {filteredAndSortedDishes.map((dish) => {
+          {dishes.map((dish) => {
             if (breakpoint !== 'xs') return <Pizza key={dish.id} pizza={dish} />;
 
             return <PizzaMobile key={dish.id} pizza={dish} />;

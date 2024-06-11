@@ -1,8 +1,8 @@
 import type { FC, ReactElement } from 'react';
 
-import { cn } from '@/shared/lib';
+import { cn, useAppDispatch } from '@/shared/lib';
+import { handleFilter } from '@/entities/dishes';
 import { useControls } from '@/shared/lib/contexts/ControlsContext';
-import { useDishes } from '@/shared/lib/contexts/DishesContext';
 
 import cl from './Tab.module.scss';
 
@@ -11,14 +11,14 @@ interface TabProps {
 }
 
 export const Tab: FC<TabProps> = ({ tab }): ReactElement => {
+  const dispatch = useAppDispatch();
   const { activeTab, setActiveTab } = useControls();
-  const { handleFilter } = useDishes();
 
   const handleClick = (tab: string) => {
     if (tab === activeTab) return;
 
     setActiveTab(tab);
-    handleFilter(tab);
+    dispatch(handleFilter({ query: tab }));
   };
 
   return (

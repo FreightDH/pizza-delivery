@@ -3,7 +3,7 @@ import { useState, type FC, type ReactElement } from 'react';
 import { useAppDispatch } from '@/shared/lib';
 import { usePopup } from '@/shared/lib/contexts/PopupContext';
 
-import { addDish } from '@/entities/order/orderSlice';
+import { addDish } from '@/entities/order';
 
 import { CustomButton } from '../CustomButton';
 import { Popup } from '../Popup';

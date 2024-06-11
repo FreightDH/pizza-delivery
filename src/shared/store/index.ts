@@ -2,10 +2,12 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import { userReducer } from '@/entities/user';
 import { orderReducer } from '@/entities/order';
+import { dishesReducer } from '@/entities/dishes';
 
 const rootReducer = combineReducers({
   userReducer,
   orderReducer,
+  dishesReducer,
 });
 
 export const store = configureStore({

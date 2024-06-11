@@ -5,7 +5,7 @@ import { cn, useAppDispatch } from '@/shared/lib';
 import { usePopup } from '@/shared/lib/contexts/PopupContext';
 import { CustomButton } from '@/shared/UI/CustomButton';
 
-import { addDish } from '@/entities/order/orderSlice';
+import { addDish } from '@/entities/order';
 
 import { leafIcon, pepperIcon } from '../assets';
 import cl from './Pizza.module.scss';

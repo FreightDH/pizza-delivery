@@ -1,5 +1,5 @@
-import { chickenCheese, pepperoni } from '@/shared/lib/contexts/DishesContext/assets';
 import { createSlice } from '@reduxjs/toolkit';
+import { chickenCheese, pepperoni } from '../dishes/assets';
 
 interface StateType {
   user: User;
@@ -12,7 +12,7 @@ const initialState: StateType = {
     birthdayDate: '19.04.2003',
     phone: '',
     email: 'maxim.zolotkov@yandex.ru',
-    bonuses: 0,
+    bonuses: 1000,
     ordersHistory: [
       {
         id: 1,
