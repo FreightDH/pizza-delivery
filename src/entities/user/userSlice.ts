@@ -5,62 +5,6 @@ interface StateType {
   user: User;
 }
 
-// user: {
-//   firstName: 'Максим',
-//   lastName: 'Золотков',
-//   birthdayDate: '19.04.2003',
-//   phone: '',
-//   email: 'maxim.zolotkov@yandex.ru',
-//   bonuses: 0,
-//   ordersHistory: [
-//     {
-//       id: 1,
-//       date: '16.04.2024 15:36',
-//       sum: 1650,
-//       bonusesOutcome: 0,
-//       bonusesIncome: 82.5,
-//       dishesCount: 2,
-//       dishes: {
-//         'Пепперони, 40см, традиционное тесто': {
-//           count: 2,
-//           price: 1850,
-//           img: pepperoni,
-//         },
-//         'Сырный цыпленок, 30см, традиционное тесто': {
-//           count: 1,
-//           price: 725,
-//           img: chickenCheese,
-//         },
-//       },
-//     },
-//     {
-//       id: 2,
-//       date: '15.03.2024 12:43',
-//       sum: 925,
-//       bonusesOutcome: 0,
-//       bonusesIncome: 46,
-//       dishesCount: 1,
-//       dishes: {
-//         'Пепперони, 40см, традиционное тесто': {
-//           count: 2,
-//           price: 1850,
-//           img: pepperoni,
-//         },
-//       },
-//     },
-//   ],
-// },
-
-// user: {
-//   firstName: '',
-//   lastName: '',
-//   birthdayDate: '',
-//   phone: '',
-//   email: '',
-//   bonuses: 0,
-//   ordersHistory: [],
-// },
-
 const initialState: StateType = {
   user: {
     firstName: 'Максим',

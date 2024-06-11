@@ -8,7 +8,7 @@ import { CustomInput, CustomMaskInput } from '@/shared/UI/CustomInput';
 import { CustomButton } from '@/shared/UI/CustomButton';
 
 import cl from '../ProfilePage.module.scss';
-import { setUser } from '@/entities/user/userSlice';
+import { setUser } from '@/entities/user';
 
 export const ProfileInfo: FC = (): ReactElement => {
   const dispatch = useAppDispatch();

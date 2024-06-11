@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState, type FC, type ReactElement, type ReactNode } from 'react';
 
 import { useAppDispatch } from '../../hooks/reduxHooks';
-import { changeUser, setUserNull } from '@/entities/user/userSlice';
+import { changeUser, setUserNull } from '@/entities/user';
 
 import { AuthContext } from './AuthContext';
 

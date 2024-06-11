@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { userReducer } from '@/entities/user/userSlice';
-import { orderReducer } from '@/entities/order/orderSlice';
+import { userReducer } from '@/entities/user';
+import { orderReducer } from '@/entities/order';
 
 const rootReducer = combineReducers({
   userReducer,
