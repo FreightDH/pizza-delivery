@@ -5,16 +5,17 @@ import { usePopup } from '@/shared/lib/contexts/PopupContext';
 import { Controls } from '@/widgets/Controls';
 import { Dishes } from '@/widgets/Dishes';
 import { DishCard } from '@/shared/UI/DishCard';
-import { ReferenceCard } from '@/shared/UI/ReferenceCard';
-import { ReferenceButton } from '@/shared/UI/ReferenceButton';
+import { CartButton } from '@/shared/UI/CartButton';
 
 import cl from './HomePage.module.scss';
+import { useBreakpoint } from '@/shared/lib';
 
 const filterTabs = ['Все', 'Мясные', 'Вегетарианские', 'Острые'];
 const sortOptions = ['популярности', 'цене', 'названию'];
 
 export const HomePage: FC = (): ReactElement => {
-  const { isDishCardOpen, isReferenceCardOpen } = usePopup();
+  const { isDishCardOpen } = usePopup();
+  const breakpoint = useBreakpoint();
 
   return (
     <main className={cl.page}>
@@ -23,8 +24,7 @@ export const HomePage: FC = (): ReactElement => {
           <Controls filterTabs={filterTabs} sortOptions={sortOptions} />
           <Dishes />
           {isDishCardOpen && <DishCard />}
-          {isReferenceCardOpen && <ReferenceCard />}
-          <ReferenceButton />
+          {breakpoint === 'xs' && <CartButton />}
         </div>
       </div>
     </main>

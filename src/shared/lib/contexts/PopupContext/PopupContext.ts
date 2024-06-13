@@ -13,9 +13,6 @@ interface PopupContextProps {
   isAuthCardOpen: boolean;
   setAuthCardOpen: Dispatch<SetStateAction<boolean>>;
 
-  isReferenceCardOpen: boolean;
-  setReferenceCardOpen: Dispatch<SetStateAction<boolean>>;
-
   isHistoryOrderCardOpen: boolean;
   orderDetails: Order | null;
   openHistoryOrderCard: (order: Order) => void;
@@ -31,8 +28,6 @@ export const PopupContext = createContext<PopupContextProps>({
   openDishCard: () => {},
   isAuthCardOpen: false,
   setAuthCardOpen: () => {},
-  isReferenceCardOpen: false,
-  setReferenceCardOpen: () => {},
   isHistoryOrderCardOpen: false,
   orderDetails: null,
   openHistoryOrderCard: () => {},

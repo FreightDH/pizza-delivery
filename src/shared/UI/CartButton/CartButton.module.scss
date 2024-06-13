@@ -1,12 +1,13 @@
 @import '@/app/styles';
 
-.reference {
+.cart {
   width: 50px;
   height: 50px;
   @include adaptiveValue('width', 50, 40);
   @include adaptiveValue('height', 50, 40);
+  padding: 6px 6px 6px 4px;
 
-  border: 1.5px solid #000;
+  border: 1px solid #000;
   border-radius: 50%;
   background-color: #ffdf8c;
 
@@ -14,11 +15,13 @@
   justify-content: center;
   align-items: center;
 
-  font-size: 32px;
-  @include adaptiveValue('font-size', 32, 24);
-  font-weight: 700;
-
   position: fixed;
   bottom: 15px;
   right: 15px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }

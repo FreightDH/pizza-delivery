@@ -20,8 +20,6 @@ export const PopupProvider: FC<PopupProviderProps> = ({ children }): ReactElemen
 
   const [isAuthCardOpen, setAuthCardOpen] = useState(false);
 
-  const [isReferenceCardOpen, setReferenceCardOpen] = useState(false);
-
   const [isHistoryOrderCardOpen, setHistoryOrderCardOpen] = useState(false);
   const [orderDetails, setOrderDetails] = useState<Order | null>(null);
 
@@ -56,7 +54,6 @@ export const PopupProvider: FC<PopupProviderProps> = ({ children }): ReactElemen
   const closeCard = useCallback(() => {
     setDishCardOpen(false);
     setAuthCardOpen(false);
-    setReferenceCardOpen(false);
     setHistoryOrderCardOpen(false);
 
     setDishDetails(null);
@@ -75,8 +72,6 @@ export const PopupProvider: FC<PopupProviderProps> = ({ children }): ReactElemen
       openDishCard,
       isAuthCardOpen,
       setAuthCardOpen,
-      isReferenceCardOpen,
-      setReferenceCardOpen,
       isHistoryOrderCardOpen,
       orderDetails,
       openHistoryOrderCard,
@@ -88,7 +83,6 @@ export const PopupProvider: FC<PopupProviderProps> = ({ children }): ReactElemen
       dishDetails,
       openDishCard,
       isAuthCardOpen,
-      isReferenceCardOpen,
       isHistoryOrderCardOpen,
       orderDetails,
       openHistoryOrderCard,
