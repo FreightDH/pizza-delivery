@@ -106,6 +106,10 @@
     @media (max-width: $mobileSmall) {
       flex-direction: column;
       gap: 10px;
+
+      button {
+        width: 100%;
+      }
     }
 
     button {

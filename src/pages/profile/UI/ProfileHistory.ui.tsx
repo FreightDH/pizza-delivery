@@ -13,6 +13,9 @@ export const ProfileHistory: FC = (): ReactElement => {
 
   return (
     <div className={cl.history}>
+      {!user.ordersHistory.length && (
+        <h1 className={cl.history__title}>Вы еще не сделали ни одного заказа.</h1>
+      )}
       {user.ordersHistory.map((order) => (
         <HistoryOrder key={order.id} order={order} />
       ))}

@@ -1,6 +1,9 @@
 import type { FC, ReactElement } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import { usePopup } from '@/shared/lib/contexts/PopupContext';
+import { AuthCard } from '@/shared/UI/AuthCard';
+
 import { Header } from '@/widgets/Header';
 import { Footer } from '@/widgets/Footer';
 import { ProfileTabs } from '@/widgets/ProfileTabs';
@@ -8,10 +11,13 @@ import { ProfileTabs } from '@/widgets/ProfileTabs';
 import cl from './ProfileLayout.module.scss';
 
 export const Layout: FC = (): ReactElement => {
+  const { isAuthCardOpen } = usePopup();
+
   return (
     <>
       <Header />
       <Outlet />
+      {isAuthCardOpen && <AuthCard />}
       <Footer />
     </>
   );
