@@ -1,0 +1,62 @@
+@import '@/app/styles';
+
+.profile {
+  width: 45px;
+  height: 45px;
+
+  border: 1.5px solid #000;
+  border-radius: 50%;
+  transition: all 0.3s ease 0s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: $mobile) {
+    display: none;
+  }
+
+  img {
+    width: 27px;
+    height: 27px;
+    object-fit: cover;
+  }
+
+  &.leave {
+    border: none;
+    border-radius: 0;
+
+    img {
+      width: 45px;
+      height: 45px;
+    }
+  }
+
+  &.menuOpen {
+    width: auto;
+    height: auto;
+    border: none;
+
+    display: flex;
+    justify-content: start;
+    gap: 7px;
+
+    position: relative;
+
+    img {
+      width: 20px;
+      height: 20px;
+      object-fit: cover;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      bottom: -10px;
+      left: 0;
+      background-color: #e3e3e3;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@import '@/app/styles';
+
+.page {
+  padding: 40px 0px;
+  @include adaptiveValue('padding-top', 40, 20);
+  @include adaptiveValue('padding-bottom', 40, 20);
+
+  &__body {
+    position: relative;
+  }
+}

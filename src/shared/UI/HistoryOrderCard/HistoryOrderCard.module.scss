@@ -1,0 +1,64 @@
+@import '@/app/styles';
+
+.card {
+  padding: 30px 40px 20px 40px;
+  @include adaptiveValue('padding-top', 30, 15);
+  @include adaptiveValue('padding-bottom', 20, 15);
+  @include adaptiveValue('padding-left', 40, 10);
+  @include adaptiveValue('padding-right', 40, 10);
+
+  min-height: 400px;
+  @include adaptiveValue('min-height', 400, 300);
+
+  font-weight: 400;
+
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin: 0px 0px 30px 0px;
+    @include adaptiveValue('margin-bottom', 30, 15);
+    font-size: 24px;
+    @include adaptiveValue('font-size', 24, 20);
+    font-weight: 700;
+  }
+
+  &__list {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__dish {
+    padding: 0px 0px 0px 20px;
+    @include adaptiveValue('padding-left', 20, 15);
+    position: relative;
+
+    font-size: 20px;
+    @include adaptiveValue('font-size', 20, 17);
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      top: 10px;
+      @include adaptiveValue('top', 10, 5);
+      left: 0;
+      background-color: #000;
+      border-radius: 50%;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__sum {
+    font-size: 20px;
+    @include adaptiveValue('font-size', 20, 16);
+  }
+}

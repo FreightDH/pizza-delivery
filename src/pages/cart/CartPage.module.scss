@@ -1,0 +1,158 @@
+@import '@/app/styles';
+
+.page {
+  padding: 40px 0px;
+  @include adaptiveValue('padding-top', 40, 20);
+  @include adaptiveValue('padding-bottom', 40, 20);
+
+  &__container {
+    max-width: 1200px !important;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    @include adaptiveValue('gap', 15, 10);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 32px;
+    @include adaptiveValue('font-size', 32, 22);
+
+    img {
+      width: 30px;
+      height: 30px;
+      @include adaptiveValue('width', 30, 20);
+      @include adaptiveValue('height', 30, 20);
+      object-fit: cover;
+    }
+  }
+
+  &__clear {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    @include adaptiveValue('gap', 10, 5);
+
+    font-size: 16px;
+    @include adaptiveValue('font-size', 16, 14);
+
+    img {
+      width: 20px;
+      height: 20px;
+      object-fit: cover;
+    }
+
+    span {
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -3px;
+        left: 50%;
+        background-color: #000;
+        transition: all 0.3s ease 0s;
+      }
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        span {
+          &::after {
+            width: 100%;
+            left: 0;
+          }
+        }
+      }
+    }
+
+    @media (hover: none) {
+      &:active {
+        span {
+          &::after {
+            width: 100%;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &__order {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &__footer {
+    padding: 15px 0px 0px 0px;
+    @include adaptiveValue('padding-top', 15, 10);
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: $mobileSmall) {
+      flex-direction: column;
+      gap: 10px;
+
+      button {
+        width: 100%;
+      }
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+}
+
+.order {
+  &__dishes {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @include adaptiveValue('gap', 30, 15);
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-weight: 400;
+    @include adaptiveValue('font-size', 22, 16);
+
+    @media (max-width: $mobileSmall) {
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+
+  &__count {
+    span {
+      font-weight: 700;
+    }
+  }
+
+  &__sum {
+    span {
+      font-weight: 700;
+      color: #fe5f1e;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@import '@/app/styles';
+
+.dishes {
+  padding: 35px 0px 0px 0px;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @include adaptiveValue('gap', 30, 20);
+  }
+
+  &__title {
+    font-size: 32px;
+    @include adaptiveValue('font-size', 32, 24);
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 280px);
+    justify-content: space-between;
+
+    column-gap: 45px;
+    row-gap: 65px;
+    @include adaptiveValue('column-gap', 45, 5);
+    @include adaptiveValue('row-gap', 65, 20);
+
+    @media (max-width: 923px) {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: $mobile) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 570px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}

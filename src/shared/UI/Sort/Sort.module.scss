@@ -1,0 +1,30 @@
+@import '@/app/styles';
+
+.sort {
+  &__body {
+    position: relative;
+    display: flex;
+    gap: 10px;
+
+    font-size: 16px;
+    @include adaptiveValue('font-size', 16, 14);
+
+    img {
+      transform: rotate(-180deg);
+      transition: all 0.2s ease 0s;
+
+      &.open {
+        transform: none;
+      }
+    }
+
+    span {
+      color: #fe5f1e;
+      border-bottom: 1px dotted #fe5f1e;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

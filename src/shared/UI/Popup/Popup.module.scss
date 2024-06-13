@@ -1,0 +1,71 @@
+@import '@/app/styles';
+
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  background-color: rgba(0, 0, 0, 0.7);
+
+  animation: appear 0.15s;
+
+  &__body {
+    min-height: 100%;
+    padding: 30px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__content {
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+  }
+
+  &__close {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -20px;
+    right: -20px;
+    @include adaptiveValue('top', -20, -25);
+    @include adaptiveValue('right', -20, -10);
+    background-color: transparent;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}

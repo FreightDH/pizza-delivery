@@ -1,0 +1,57 @@
+@import '@/app/styles';
+
+.dropdown {
+  opacity: 0;
+  visibility: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+  top: 30px;
+  right: 0;
+  z-index: 5;
+
+  transition: all 0.2s ease 0s;
+
+  &__body {
+    padding: 13px 0;
+    @include adaptiveValue('padding-top', 13, 7);
+    @include adaptiveValue('padding-bottom', 13, 7);
+
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2);
+  }
+
+  &__option {
+    padding: 10px 15px;
+    font-weight: 400;
+    @include adaptiveValue('font-size', 16, 13);
+
+    @media (hover: hover) {
+      &:hover {
+        cursor: pointer;
+        background-color: rgba($color: #fe5f1e, $alpha: 0.05);
+      }
+    }
+
+    @media (hover: none) {
+      &:active {
+        cursor: pointer;
+        background-color: rgba($color: #fe5f1e, $alpha: 0.05);
+      }
+    }
+
+    &.active {
+      color: #fe5f1e;
+      font-weight: 700;
+      background-color: rgba($color: #fe5f1e, $alpha: 0.05);
+    }
+  }
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+  }
+}

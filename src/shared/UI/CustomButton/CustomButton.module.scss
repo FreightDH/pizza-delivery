@@ -1,0 +1,71 @@
+@import '@/app/styles';
+
+.btn {
+  min-width: 140px;
+  @include adaptiveValue('min-width', 140, 90);
+  height: 40px;
+  @include adaptiveValue('height', 40, 35);
+  display: inline-block;
+  padding: 10px 20px;
+  @include adaptiveValue('padding-top', 10, 7);
+  @include adaptiveValue('padding-bottom', 10, 7);
+  @include adaptiveValue('padding-left', 20, 10);
+  @include adaptiveValue('padding-right', 20, 10);
+
+  color: #eb5a1e;
+  font-size: 16px;
+  @include adaptiveValue('font-size', 16, 13);
+  font-weight: 700;
+
+  border: 1px solid #eb5a1e;
+  border-radius: 30px;
+  transition: all 0.3s ease 0s;
+
+  &.primary {
+    padding: 11px 25px;
+
+    color: #fff;
+    background-color: #fe5f1e;
+
+    &.black {
+      color: #fff;
+      background-color: #282828;
+      border: none;
+    }
+  }
+
+  &.black {
+    color: #000;
+    border: 1px solid #282828;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: #eb5a1e;
+      color: #fff;
+    }
+
+    &.primary:hover {
+      background-color: #f34500;
+    }
+
+    &.black:hover {
+      background-color: #282828;
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      background-color: #eb5a1e;
+      color: #fff;
+    }
+
+    &.primary:active {
+      background-color: #f34500;
+    }
+
+    &.black:active {
+      background-color: #282828;
+    }
+  }
+}

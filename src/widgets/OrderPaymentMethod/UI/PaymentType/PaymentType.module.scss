@@ -1,0 +1,52 @@
+.type {
+  padding: 0px 0px 0px 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  input {
+    display: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 5px;
+    left: 0;
+    border: 1.5px solid #8d8d8d;
+    border-radius: 50%;
+    background-color: transparent;
+  }
+
+  &::after {
+    content: '';
+    display: none;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    top: 9px;
+    left: 4px;
+    border-radius: 50%;
+  }
+
+  &.active {
+    &::before {
+      border: 1.5px solid #000;
+    }
+
+    &::after {
+      display: block;
+      background-color: #000;
+    }
+  }
+}
