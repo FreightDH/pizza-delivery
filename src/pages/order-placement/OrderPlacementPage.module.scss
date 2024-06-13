@@ -14,6 +14,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 35px;
+    @include adaptiveValue('gap', 35, 20);
   }
 
   &__title {
@@ -25,6 +26,7 @@
     display: flex;
     flex-direction: column;
     gap: 25px;
+    @include adaptiveValue('gap', 25, 20);
   }
 }
 
@@ -32,27 +34,37 @@
   &__row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     gap: 35px;
+    @include adaptiveValue('gap', 35, 20);
 
     div {
       width: 100%;
+    }
+
+    @media (max-width: $mobileSmall) {
+      flex-direction: column;
+
+      input {
+        max-width: 100% !important;
+      }
     }
   }
 
   &__wrapper {
     display: flex;
     gap: 20px;
-  }
 
-  &__payment {
-    padding: 20px 15px;
+    input {
+      max-width: 190px;
+    }
 
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+    @media (max-width: $tablet) {
+      flex-direction: column;
 
-    background-color: #f6f6f6;
+      input {
+        max-width: 100%;
+      }
+    }
   }
 
   &__buttons {
@@ -64,65 +76,13 @@
       align-items: center;
       gap: 10px;
     }
-  }
-}
 
-.payment {
-  &__title {
-    margin: 0px 0px 10px 0px;
-    font-size: 16px;
-    font-weight: 700;
-  }
+    @media (max-width: $mobileSmall) {
+      flex-direction: column;
+      gap: 15px;
 
-  &__label {
-    padding: 0px 0px 0px 25px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    position: relative;
-
-    font-size: 14px;
-    font-weight: 400;
-
-    input {
-      display: none;
-    }
-
-    &:hover {
-      cursor: pointer;
-    }
-
-    &::before {
-      content: '';
-      position: absolute;
-      width: 15px;
-      height: 15px;
-      top: 5px;
-      left: 0;
-      border: 1.5px solid #8d8d8d;
-      border-radius: 50%;
-      background-color: transparent;
-    }
-
-    &::after {
-      content: '';
-      display: none;
-      position: absolute;
-      width: 7px;
-      height: 7px;
-      top: 9px;
-      left: 4px;
-      border-radius: 50%;
-    }
-
-    &.active {
-      &::before {
-        border: 1.5px solid #000;
-      }
-
-      &::after {
-        display: block;
-        background-color: #000;
+      button {
+        justify-content: center;
       }
     }
   }

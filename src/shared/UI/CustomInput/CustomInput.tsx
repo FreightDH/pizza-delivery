@@ -1,4 +1,5 @@
 import { forwardRef, type ComponentProps, type FC, type ReactElement } from 'react';
+
 import cl from './CustomInput.module.scss';
 
 interface CustomInputProps extends ComponentProps<'input'> {

@@ -1,46 +1,66 @@
-import type { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import type { ChangeEvent, MouseEvent } from 'react';
 import { useState, type FC, type ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMask } from '@react-input/mask';
 
-import { cn, useAppSelector } from '@/shared/lib';
+import { useAppSelector } from '@/shared/lib';
 
 import { CustomInput, CustomMaskInput } from '@/shared/UI/CustomInput';
 import { CustomButton } from '@/shared/UI/CustomButton';
 import { CustomTextarea } from '@/shared/UI/CustomTextarea';
+import { OrderPaymentMethod } from '@/widgets/OrderPaymentMethod';
 
-import { arrowIcon, creditCardIcon } from './assets';
+import arrowIcon from './assets/arrow.svg';
 import cl from './OrderPlacementPage.module.scss';
 
-interface OrderPlacementPageProps {}
+type OrderField =
+  | 'name'
+  | 'phone'
+  | 'city'
+  | 'street'
+  | 'house'
+  | 'flat'
+  | 'entrance'
+  | 'floor'
+  | 'commentary';
 
-export const OrderPlacementPage: FC<OrderPlacementPageProps> = (): ReactElement => {
+export const OrderPlacementPage: FC = (): ReactElement => {
   const navigate = useNavigate();
   const order = useAppSelector((state) => state.orderReducer.order);
 
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const phoneInputRef = useMask({ mask: '+7 (___) ___-__-__', replacement: { _: /\d/ } });
-  const [city, setCity] = useState('');
-  const [street, setStreet] = useState('');
-  const [house, setHouse] = useState('');
-  const [flat, setFlat] = useState('');
-  const [entrance, setEntrance] = useState('');
-  const [floor, setFloor] = useState('');
-  const [paymentMethod, setPaymentMethod] = useState('Картой на сайте');
-  const [commentary, setCommentary] = useState('');
+  const [orderData, setOrderData] = useState({
+    name: '',
+    phone: '',
+    city: 'Санкт-Петербург',
+    street: '',
+    house: '',
+    flat: '',
+    entrance: '',
+    floor: '',
+    commentary: '',
+  });
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    setValue: Dispatch<SetStateAction<string>>
-  ) => {
+  const phoneInputRef = useMask({ mask: '+7 (___) ___-__-__', replacement: { _: /\d/ } });
+  const [paymentMethod, setPaymentMethod] = useState('Картой на сайте');
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, field: OrderField) => {
     const { value } = e.target;
-    setValue(value);
+    setOrderData({ ...orderData, [field]: value });
   };
 
-  const handlePaymentMethod = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setPaymentMethod(value);
+  const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
+    console.log('submit');
+
+    e.preventDefault();
+
+    for (const field in orderData) {
+      if (!orderData[field as OrderField].trim()) {
+        alert('Не все поля заполнены корректно!');
+        return;
+      }
+    }
+
+    navigate('/cart/success');
   };
 
   return (
@@ -53,29 +73,29 @@ export const OrderPlacementPage: FC<OrderPlacementPageProps> = (): ReactElement 
               <CustomInput
                 required
                 placeholder="Имя"
-                value={name}
-                onChange={(e) => handleChange(e, setName)}
+                value={orderData.name}
+                onChange={(e) => handleChange(e, 'name')}
               />
               <CustomMaskInput
                 ref={phoneInputRef}
                 required
                 placeholder="Телефон"
-                value={phone}
-                onChange={(e) => handleChange(e, setPhone)}
+                value={orderData.phone}
+                onChange={(e) => handleChange(e, 'phone')}
               />
             </div>
             <div className={cl.form__row}>
               <CustomInput
                 required
                 placeholder="Город"
-                value={city}
-                onChange={(e) => handleChange(e, setCity)}
+                value={orderData.city}
+                onChange={(e) => handleChange(e, 'city')}
               />
               <CustomInput
                 required
                 placeholder="Улица"
-                value={street}
-                onChange={(e) => handleChange(e, setStreet)}
+                value={orderData.street}
+                onChange={(e) => handleChange(e, 'street')}
               />
             </div>
             <div className={cl.form__row}>
@@ -83,91 +103,43 @@ export const OrderPlacementPage: FC<OrderPlacementPageProps> = (): ReactElement 
                 <CustomInput
                   required
                   placeholder="Дом"
-                  style={{ maxWidth: '190px' }}
-                  value={house}
-                  onChange={(e) => handleChange(e, setHouse)}
+                  value={orderData.house}
+                  onChange={(e) => handleChange(e, 'house')}
                 />
                 <CustomInput
                   required
                   placeholder="Квартира"
-                  style={{ maxWidth: '190px' }}
-                  value={flat}
-                  onChange={(e) => handleChange(e, setFlat)}
+                  value={orderData.flat}
+                  onChange={(e) => handleChange(e, 'flat')}
                 />
               </div>
               <div className={cl.form__wrapper}>
                 <CustomInput
-                  required
                   placeholder="Подъезд"
-                  style={{ maxWidth: '190px' }}
-                  value={entrance}
-                  onChange={(e) => handleChange(e, setEntrance)}
+                  value={orderData.entrance}
+                  onChange={(e) => handleChange(e, 'entrance')}
                 />
                 <CustomInput
-                  required
                   placeholder="Этаж"
-                  style={{ maxWidth: '190px' }}
-                  value={floor}
-                  onChange={(e) => handleChange(e, setFloor)}
+                  value={orderData.floor}
+                  onChange={(e) => handleChange(e, 'floor')}
                 />
               </div>
             </div>
             <CustomTextarea
               placeholder="Комментарий (необязательно)"
-              value={commentary}
-              onChange={(e) => handleChange(e, setCommentary)}
+              value={orderData.commentary}
+              onChange={(e) => handleChange(e, 'commentary')}
             />
-            <div className={cl.form__payment}>
-              <div className={cl.payment__title}>Выберите способ оплаты</div>
-              <label
-                className={cn(cl.payment__label, { [cl.active]: paymentMethod === 'Картой на сайте' })}
-                htmlFor="cardOnline"
-              >
-                <img alt="credit-card-icon" src={creditCardIcon} />
-                Картой на сайте
-                <input
-                  checked={paymentMethod === 'Картой на сайте'}
-                  id="cardOnline"
-                  type="radio"
-                  value="Картой на сайте"
-                  onChange={handlePaymentMethod}
-                />
-              </label>
-              <label
-                className={cn(cl.payment__label, { [cl.active]: paymentMethod === 'Картой курьеру' })}
-                htmlFor="cardToCourier"
-              >
-                <img alt="credit-card-icon" src={creditCardIcon} />
-                Картой курьеру
-                <input
-                  checked={paymentMethod === 'Картой курьеру'}
-                  id="cardToCourier"
-                  type="radio"
-                  value="Картой курьеру"
-                  onChange={handlePaymentMethod}
-                />
-              </label>
-              <label
-                className={cn(cl.payment__label, { [cl.active]: paymentMethod === 'Наличными курьеру' })}
-                htmlFor="cashToCourier"
-              >
-                <img alt="credit-card-icon" src={creditCardIcon} />
-                Наличными курьеру
-                <input
-                  checked={paymentMethod === 'Наличными курьеру'}
-                  id="cashToCourier"
-                  type="radio"
-                  value="Наличными курьеру"
-                  onChange={handlePaymentMethod}
-                />
-              </label>
-            </div>
+            <OrderPaymentMethod paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} />
             <div className={cl.form__buttons}>
-              <CustomButton black onClick={() => navigate(-1)}>
+              <CustomButton black type="button" onClick={() => navigate('/cart')}>
                 <img alt="arrow-icon" src={arrowIcon} />
                 Вернуться назад
               </CustomButton>
-              <CustomButton primary>Оформить заказ за {order.sum} ₽</CustomButton>
+              <CustomButton primary onClick={handleSubmit}>
+                Оформить заказ за {order.sum} ₽
+              </CustomButton>
             </div>
           </form>
         </div>
