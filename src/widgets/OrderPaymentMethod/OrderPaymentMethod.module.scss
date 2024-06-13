@@ -1,0 +1,16 @@
+.payment {
+  padding: 20px 15px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  background-color: #f6f6f6;
+  border-radius: 5px;
+
+  &__title {
+    margin: 0px 0px 10px 0px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
