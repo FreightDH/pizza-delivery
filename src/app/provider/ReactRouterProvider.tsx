@@ -7,6 +7,7 @@ import { HomePageRoute } from '@/pages/home';
 import { ProfileBonusesRoute, ProfileHistoryRoute, ProfileInfoRoute } from '@/pages/profile';
 import { CartPageRoute } from '@/pages/cart';
 import { OrderPlacementPageRoute } from '@/pages/order-placement';
+import { OrderPlacedPageRoute } from '@/pages/order-placed';
 import { PageNotFoundRoute, ServerErrorPageRoute } from '@/pages/errors';
 
 const router = createBrowserRouter([
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
   {
     path: '/cart',
     element: <Layout />,
-    children: [CartPageRoute, OrderPlacementPageRoute],
+    children: [CartPageRoute, OrderPlacementPageRoute, OrderPlacedPageRoute],
   },
   {
     path: '/error',

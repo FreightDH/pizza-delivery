@@ -52,10 +52,10 @@ export const OrderPlacementPage: FC = (): ReactElement => {
   };
 
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
     const date = new Date();
     const formatDate = getFormatDate(date);
-
-    e.preventDefault();
 
     for (const field in orderData) {
       if (!orderData[field as OrderField].trim()) {

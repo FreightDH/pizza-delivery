@@ -1,0 +1,1 @@
+export { OrderPlacedPageRoute } from './OrderPlacedPageRoute';
