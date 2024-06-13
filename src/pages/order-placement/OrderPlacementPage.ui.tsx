@@ -3,7 +3,9 @@ import { useState, type FC, type ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMask } from '@react-input/mask';
 
-import { useAppSelector } from '@/shared/lib';
+import { getFormatDate, useAppDispatch, useAppSelector } from '@/shared/lib';
+import { resetOrder } from '@/entities/order';
+import { addOrderToHistory } from '@/entities/user';
 
 import { CustomInput, CustomMaskInput } from '@/shared/UI/CustomInput';
 import { CustomButton } from '@/shared/UI/CustomButton';
@@ -26,6 +28,7 @@ type OrderField =
 
 export const OrderPlacementPage: FC = (): ReactElement => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const order = useAppSelector((state) => state.orderReducer.order);
 
   const [orderData, setOrderData] = useState({
@@ -49,7 +52,8 @@ export const OrderPlacementPage: FC = (): ReactElement => {
   };
 
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
-    console.log('submit');
+    const date = new Date();
+    const formatDate = getFormatDate(date);
 
     e.preventDefault();
 
@@ -60,6 +64,8 @@ export const OrderPlacementPage: FC = (): ReactElement => {
       }
     }
 
+    dispatch(addOrderToHistory({ order: { ...order, date: formatDate } }));
+    dispatch(resetOrder());
     navigate('/cart/success');
   };
 

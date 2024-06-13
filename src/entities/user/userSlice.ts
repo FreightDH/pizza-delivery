@@ -76,8 +76,15 @@ export const userSlice = createSlice({
         ordersHistory: [],
       };
     },
+    addOrderToHistory: (state, action) => {
+      const { order } = action.payload;
+      const prevOrderId = state.user.ordersHistory[state.user.ordersHistory.length - 1].id;
+      order.id = prevOrderId + 1;
+
+      state.user.ordersHistory.push(order);
+    },
   },
 });
 
-export const { changeUser, setUser, setUserNull } = userSlice.actions;
+export const { changeUser, setUser, setUserNull, addOrderToHistory } = userSlice.actions;
 export const userReducer = userSlice.reducer;
