@@ -1,5 +1,5 @@
 import type { FC, ReactElement } from 'react';
-import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { ErrorLayout, Layout, ProfileLayout } from '@/pages/layout';
 
@@ -34,4 +34,8 @@ const router = createBrowserRouter([
   },
 ]);
 
-export const ReactRouterProvider: FC = (): ReactElement => <RouterProvider router={router} />;
+export const ReactRouterProvider: FC = (): ReactElement => (
+  <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <RouterProvider router={router} />;
+  </BrowserRouter>
+);
