@@ -10,28 +10,31 @@ import { OrderPlacementPageRoute } from '@/pages/order-placement';
 import { OrderPlacedPageRoute } from '@/pages/order-placed';
 import { PageNotFoundRoute, ServerErrorPageRoute } from '@/pages/errors';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Layout />,
-    children: [HomePageRoute],
-    errorElement: <Navigate to="/error/404" />,
-  },
-  {
-    path: '/profile',
-    element: <ProfileLayout />,
-    children: [ProfileBonusesRoute, ProfileInfoRoute, ProfileHistoryRoute],
-  },
-  {
-    path: '/cart',
-    element: <Layout />,
-    children: [CartPageRoute, OrderPlacementPageRoute, OrderPlacedPageRoute],
-  },
-  {
-    path: '/error',
-    element: <ErrorLayout />,
-    children: [PageNotFoundRoute, ServerErrorPageRoute],
-  },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <Layout />,
+      children: [HomePageRoute],
+      errorElement: <Navigate to="/error/404" />,
+    },
+    {
+      path: '/profile',
+      element: <ProfileLayout />,
+      children: [ProfileBonusesRoute, ProfileInfoRoute, ProfileHistoryRoute],
+    },
+    {
+      path: '/cart',
+      element: <Layout />,
+      children: [CartPageRoute, OrderPlacementPageRoute, OrderPlacedPageRoute],
+    },
+    {
+      path: '/error',
+      element: <ErrorLayout />,
+      children: [PageNotFoundRoute, ServerErrorPageRoute],
+    },
+  ],
+  { basename: import.meta.env.BASE_URL }
+);
 
 export const ReactRouterProvider: FC = (): ReactElement => <RouterProvider router={router} />;
